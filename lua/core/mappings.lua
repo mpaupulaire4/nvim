@@ -5,6 +5,11 @@ local cmd = vim.cmd
 
 local M = {}
 
+function _G.set_terminal_keymaps()
+  local opts = {noremap = true}
+  vim.api.nvim_buf_set_keymap(0, 't', '<c-e>', [[<C-\><C-n>]], opts)
+end
+
 -- these mappings will only be called during initialization
 M.misc = function()
   -- Better jumts and tag follows
@@ -19,7 +24,7 @@ M.misc = function()
   map("v", "p", '"_dP')
 
   -- Replace text and go to insert mode
-  map("v", "i", '"_di')
+  -- map("v", "i", '"_di')
 
   -- insert mode and completion related
   map("i", "<C-e>",   'pumvisible() ? "<C-e>" : "<C-c>"', { expr = true })
@@ -170,11 +175,6 @@ M.nvimtree = function()
    -- map("n", plugin_maps.nvimtree.focus, ":NvimTreeFocus <CR>")
 end
 
-M.diffview = function()
-   map("n", "<leader>gs", "<cmd>DiffviewOpen <CR>")
-   -- map("n", plugin_maps.nvimtree.focus, ":NvimTreeFocus <CR>")
-end
-
 M.telescope = function()
    map("n", "<leader>fb", "<cmd>Telescope buffers <CR>")
    map("n", "<leader>ff", "<cmd>Telescope find_files hidden=true <CR>")
@@ -182,6 +182,10 @@ M.telescope = function()
    map("n", "<leader>fh", "<cmd>Telescope help_tags <CR>")
    map("n", "<leader>fw", "<cmd>Telescope live_grep <CR>")
    map("n", "<leader>fo", "<cmd>Telescope oldfiles <CR>")
+end
+
+M.toggleterm = function()
+   map("n", "<leader>gs", "<cmd>lua _lazygit_toggle()<CR>")
 end
 
 M.gitsigns = function()
@@ -192,7 +196,7 @@ M.gitsigns = function()
    map("n", "<leader>hr", "<cmd>Gitsigns reset_hunk<CR>")
    map("v", "<leader>hr", ":Gitsigns reset_hunk<CR>")
    map("n", "<leader>hR", "<cmd>Gitsigns reset_buffer<CR>")
-   map("n", "<leader>hp", "<cmd>Gitsigns preview_hunk<CR>")
+   map("n", "<leader>hd", "<cmd>Gitsigns preview_hunk<CR>")
    map("n", "<leader>hS", "<cmd>Gitsigns stage_buffer<CR>")
    map("n", "<leader>hU", "<cmd>Gitsigns reset_buffer_index<CR>")
 end

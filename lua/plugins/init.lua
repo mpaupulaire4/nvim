@@ -53,24 +53,25 @@ return packer.startup(function()
       config = "require('plugins.configs.treesitter')",
    }
 
-   -- git stuff
    use {
-      "lewis6991/gitsigns.nvim",
-      opt = true,
-      config = "require('plugins.configs.gitsigns')",
-      setup = function()
-         require("core.utils").packer_lazy_load "gitsigns.nvim"
-         require("core.mappings").gitsigns()
-      end,
+     "akinsho/toggleterm.nvim",
+     opt = true,
+     config = "require('plugins.configs.toggleterm')",
+     setup = function()
+       require("core.utils").packer_lazy_load "toggleterm.nvim"
+       require("core.mappings").toggleterm()
+     end,
    }
 
+   -- git stuff
    use {
-     'sindrets/diffview.nvim',
-     cmd = { "DiffviewOpen", "DiffviewFileHistory" },
-     requires = 'nvim-lua/plenary.nvim',
+     "lewis6991/gitsigns.nvim",
+     opt = true,
+     config = "require('plugins.configs.gitsigns')",
      setup = function()
-       require("core.mappings").diffview()
-     end
+       require("core.utils").packer_lazy_load "gitsigns.nvim"
+       require("core.mappings").gitsigns()
+     end,
    }
 
    -- lsp stuff
@@ -92,12 +93,6 @@ return packer.startup(function()
      after = "nvim-lspconfig",
      config = "require('plugins.configs.lspconfig')",
    }
-
-   -- use {
-   --    "ray-x/lsp_signature.nvim",
-   --    after = "nvim-lspconfig",
-   --    config = "require('plugins.configs.others').signature()",
-   -- }
 
    use {
       "andymass/vim-matchup",
