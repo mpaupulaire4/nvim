@@ -13,8 +13,8 @@ return packer.startup(function()
    use "nvim-lua/plenary.nvim"
 
    use {
-      "wbthomason/packer.nvim",
-      event = "VimEnter",
+     "wbthomason/packer.nvim",
+     event = "VimEnter",
    }
 
    use  {
@@ -23,16 +23,29 @@ return packer.startup(function()
    }
 
    use {
-      "kyazdani42/nvim-web-devicons",
-      after = "onedark.nvim",
-      config = "require('plugins.configs.icons')",
+     "glepnir/dashboard-nvim",
+     config = "require('plugins.configs.dashboard')",
+     setup = function()
+       require("core.mappings").dashboard()
+     end,
    }
 
    use {
-     'nvim-lualine/lualine.nvim',
-     after = "nvim-web-devicons",
-     requires = 'kyazdani42/nvim-web-devicons',
-     config = "require('plugins.configs.lualine')"
+     "kyazdani42/nvim-web-devicons",
+     after = "onedark.nvim",
+     config = "require('plugins.configs.icons')",
+   }
+
+   use {
+     "stevearc/dressing.nvim",
+     after = "onedark.nvim",
+     config = "require('plugins.configs.dressing')",
+   }
+
+   use {
+      "rcarriga/nvim-notify",
+      after = "dressing.nvim",
+      config = "require('plugins.configs.nvim-notify')",
    }
 
    use {
@@ -54,13 +67,10 @@ return packer.startup(function()
    }
 
    use {
-     "akinsho/toggleterm.nvim",
-     opt = true,
-     config = "require('plugins.configs.toggleterm')",
-     setup = function()
-       require("core.utils").packer_lazy_load "toggleterm.nvim"
-       require("core.mappings").toggleterm()
-     end,
+     'nvim-lualine/lualine.nvim',
+     event = "BufRead",
+     requires = 'kyazdani42/nvim-web-devicons',
+     config = "require('plugins.configs.lualine')"
    }
 
    -- git stuff
@@ -78,20 +88,20 @@ return packer.startup(function()
 
    use {
       "neovim/nvim-lspconfig",
-      opt = true,
-      setup = function()
-         require("core.utils").packer_lazy_load "nvim-lspconfig"
-         -- reload the current file so lsp actually starts for it
-         vim.defer_fn(function()
-            vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
-          end, 1)
-      end,
+      event = "BufRead",
    }
 
    use {
      "williamboman/nvim-lsp-installer",
      after = "nvim-lspconfig",
-     config = "require('plugins.configs.lspconfig')",
+     -- config = "require('plugins.configs.lspconfig')",
+     config = function()
+       require('plugins.configs.lspconfig')
+       -- reload the current file so lsp actually starts for it
+       vim.defer_fn(function()
+         vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
+       end, 1)
+     end,
    }
 
    use {
@@ -127,14 +137,6 @@ return packer.startup(function()
    }
 
    use {
-      "glepnir/dashboard-nvim",
-      config = "require('plugins.configs.dashboard')",
-      setup = function()
-         require("core.mappings").dashboard()
-      end,
-   }
-
-   use {
       "numToStr/Comment.nvim",
       module = "Comment",
       config = "require('plugins.configs.others').comment()",
@@ -143,11 +145,9 @@ return packer.startup(function()
       end,
    }
 
-   -- file managing , picker etc
+  -- file managing , picker etc
    use {
       "kyazdani42/nvim-tree.lua",
-      -- only set "after" if lazy load is disabled and vice versa for "cmd"
-      -- after = "nvim-web-devicons",
       cmd = { "NvimTreeToggle", "NvimTreeFocus" },
       config = "require('plugins.configs.nvimtree')",
       setup = function()
@@ -156,8 +156,17 @@ return packer.startup(function()
    }
 
    use {
+     'nvim-telescope/telescope-fzf-native.nvim',
+     opt = true,
+     run = 'make',
+      setup = function()
+        require("core.utils").packer_lazy_load "telescope-fzf-native.nvim"
+      end
+   }
+
+   use {
       "nvim-telescope/telescope.nvim",
-      cmd = "Telescope",
+      after = "telescope-fzf-native.nvim",
       requires = { "nvim-telescope/telescope-fzf-native.nvim" },
       config = "require('plugins.configs.telescope')",
       setup = function()
@@ -166,34 +175,26 @@ return packer.startup(function()
    }
 
    use {
-     'nvim-telescope/telescope-fzf-native.nvim',
-     run = 'make',
-     after = "telescope.nvim"
-   }
-
-   use {
-      "rcarriga/nvim-notify",
-      after = { "telescope.nvim" },
-      -- opt = true,
-      config = "require('plugins.configs.nvim-notify')",
-   }
-
-   use {
       "DanilaMihailov/beacon.nvim",
-      event = "VimEnter",
+      opt = true,
+      setup = function()
+        require("core.utils").packer_lazy_load "beacon.nvim"
+      end
    }
 
    use {
       "beauwilliams/focus.nvim",
-      cmd = {"FocusSplitNicely", "FocusSplitCycle", "FocusSplitLeft", "FocusSplitRight", "FocusSplitUp", "FocusSplitDown", "FocusMaximise"},
+      opt = true,
       config = "require('plugins.configs.focus')",
       setup = function()
-         require("core.mappings").focus()
+        require("core.utils").packer_lazy_load "focus.nvim"
+        require("core.mappings").focus()
       end,
    }
 
    use {
      'luukvbaal/stabilize.nvim',
+     opt = true,
      config = "require('plugins.configs.stabilize')",
      setup = function()
        require("core.utils").packer_lazy_load "stabilize.nvim"
@@ -207,6 +208,16 @@ return packer.startup(function()
       setup = function()
          require("core.mappings").close_buffers()
       end,
+   }
+
+   use {
+     "akinsho/toggleterm.nvim",
+     opt = true,
+     config = "require('plugins.configs.toggleterm')",
+     setup = function()
+       require("core.utils").packer_lazy_load "toggleterm.nvim"
+       require("core.mappings").toggleterm()
+     end,
    }
 
 end)

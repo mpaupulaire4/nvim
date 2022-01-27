@@ -8,6 +8,7 @@ local M = {}
 function _G.set_terminal_keymaps()
   local opts = {noremap = true}
   vim.api.nvim_buf_set_keymap(0, 't', '<c-e>', [[<C-\><C-n>]], opts)
+  vim.api.nvim_buf_set_keymap(0, 'n', '<c-e>', [[:ToggleTerm<cr>]], opts)
 end
 
 -- these mappings will only be called during initialization
@@ -130,30 +131,10 @@ M.dashboard = function()
 end
 
 M.lspconfig = function()
-   local m = {
-      declaration = "gD",
-      definition = "gd",
-      hover = "K",
-      implementation = "gi",
-      signature_help = "gk",
-      add_workspace_folder = "<leader>wa",
-      remove_workspace_folder = "<leader>wr",
-      list_workspace_folders = "<leader>wl",
-      type_definition = "<leader>D",
-      rename = "<leader>rn",
-      code_action = "<leader>ca",
-      references = "gr",
-      float_diagnostics = "ge",
-      goto_prev = "[d",
-      goto_next = "]d",
-      set_loclist = "<leader>q",
-      formatting = "<leader>fm",
-   }
-
    -- See `:help vim.lsp.*` for documentation on any of the below functions
-   map("n", m.declaration, "<cmd>lua vim.lsp.buf.declaration()<CR>")
-   map("n", m.definition, "<cmd>lua vim.lsp.buf.definition()<CR>")
-   map("n", m.hover, "<cmd>lua vim.lsp.buf.hover()<CR>")
+   -- map("n", m.declaration, "<cmd>lua vim.lsp.buf.declaration()<CR>")
+   -- map("n", m.definition, "<cmd>lua vim.lsp.buf.definition()<CR>")
+   -- map("n", "<C-i>", "<cmd>lua vim.lsp.buf.hover()<CR>")
    -- map("n", m.implementation, "<cmd>lua vim.lsp.buf.implementation()<CR>")
    -- map("n", m.signature_help, "<cmd>lua vim.lsp.buf.signature_help()<CR>")
    -- map("n", m.add_workspace_folder, "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>")
@@ -161,8 +142,8 @@ M.lspconfig = function()
    -- map("n", m.list_workspace_folders, "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>")
    -- map("n", m.type_definition, "<cmd>lua vim.lsp.buf.type_definition()<CR>")
    -- map("n", m.rename, "<cmd>lua vim.lsp.buf.rename()<CR>")
-   map("n", m.code_action, "<cmd>lua vim.lsp.buf.code_action()<CR>")
-   map("n", m.references, "<cmd>lua vim.lsp.buf.references()<CR>")
+   -- map("n", m.code_action, "<cmd>lua vim.lsp.buf.code_action()<CR>")
+   -- map("n", m.references, "<cmd>lua vim.lsp.buf.references()<CR>")
    -- map("n", m.float_diagnostics, "<cmd>lua vim.diagnostic.open_float()<CR>")
    -- map("n", m.goto_prev, "<cmd>lua vim.diagnostic.goto_prev()<CR>")
    -- map("n", m.goto_next, "<cmd>lua vim.diagnostic.goto_next()<CR>")
@@ -182,6 +163,11 @@ M.telescope = function()
    map("n", "<leader>fh", "<cmd>Telescope help_tags <CR>")
    map("n", "<leader>fw", "<cmd>Telescope live_grep <CR>")
    map("n", "<leader>fo", "<cmd>Telescope oldfiles <CR>")
+
+   -- LSP related
+   map("n", "gd", "<cmd>Telescope lsp_definitions<cr>")
+   map("n", "gr", "<cmd>Telescope lsp_references<cr>")
+   map("n", "<leader>ca", "<cmd>Telescope lsp_code_actions<cr>")
 end
 
 M.toggleterm = function()

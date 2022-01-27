@@ -20,6 +20,7 @@ M.blankline = function()
          "lspinfo",
          "TelescopePrompt",
          "TelescopeResults",
+         "NvimTree",
          "",
       },
       buftype_exclude = { "terminal" },
