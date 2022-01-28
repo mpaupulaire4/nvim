@@ -15,11 +15,11 @@ end
 M.misc = function()
   -- Better jumts and tag follows
   map("n", "<C-f>", '<C-]>')
-  -- map("n", "<C-[>", '<C-o>')
-  -- map("n", "<C-]>", '<C-i>')
+  -- map("", "<C-[>", '<C-o>')
+  -- map("", "<C-]>", '<C-i>')
 
   -- Alternate Esc
-  map({"n", "v", "c"}, "<C-e>", '<Esc>')
+  map({"", "n", "v", "c"}, "<C-e>", '<Esc>')
   map({"n", "i", "v", "c"}, "<Esc>", '<Nop>')
   -- Don't copy the replaced text after pasting in visual mode
   map("v", "p", '"_dP')

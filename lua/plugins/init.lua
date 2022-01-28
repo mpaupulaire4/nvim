@@ -23,13 +23,21 @@ return packer.startup(function()
    }
 
    use {
-     "glepnir/dashboard-nvim",
-     config = "require('plugins.configs.dashboard')",
-     setup = function()
-       require("core.mappings").dashboard()
-     end,
-   }
+    'goolord/alpha-nvim',
+    config = "require('plugins.configs.dashboard')",
+    -- config = function ()
+    --     require'alpha'.setup(require'alpha.themes.dashboard'.config)
+    -- end
+  }
 
+   -- use {
+   --   "glepnir/dashboard-nvim",
+   --   config = "require('plugins.configs.dashboard')",
+   --   setup = function()
+   --     require("core.mappings").dashboard()
+   --   end,
+   -- }
+   --
    use {
      "kyazdani42/nvim-web-devicons",
      after = "onedark.nvim",
@@ -52,6 +60,12 @@ return packer.startup(function()
       "lukas-reineke/indent-blankline.nvim",
       event = "BufRead",
       config = "require('plugins.configs.others').blankline()",
+   }
+
+   use {
+      "mg979/vim-visual-multi",
+      event = "BufRead",
+      setup = "require('plugins.configs.visualmulti')",
    }
 
    use {
@@ -218,6 +232,19 @@ return packer.startup(function()
        require("core.utils").packer_lazy_load "toggleterm.nvim"
        require("core.mappings").toggleterm()
      end,
+   }
+
+   use {
+    "elkowar/yuck.vim",
+    ft = { "yuck" },
+   }
+
+   use {
+      'ggandor/lightspeed.nvim',
+      opt = true,
+      setup = function()
+         require("core.utils").packer_lazy_load "lightspeed.nvim"
+      end,
    }
 
 end)
