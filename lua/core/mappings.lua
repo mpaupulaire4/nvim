@@ -64,6 +64,9 @@ M.misc = function()
   map("n", "<S-t>", ":enew <CR>") -- new buffer
   map("n", "<C-t>", ":tabnew <CR>") -- new tabs
 
+  map("n", "<Tab>", "<cmd>bnext<CR>") -- new buffer
+  map("n", "<S-Tab>", "<cmd>bprevious<CR>") -- new tabs
+
   map("n", "<C-q>", ":q <CR>") -- ctrl + q to quit
   map("i", "<C-q>", "<Esc>:q <CR>") -- ctrl + q to quit
 
