@@ -19,9 +19,11 @@ cmp.setup {
       -- Source
       vim_item.menu = ({
         buffer = "[Buffer]",
+        treesitter = "[TS]",
         nvim_lsp = "[LSP]",
         luasnip = "[Snip]",
         nvim_lua = "[VIM]",
+        path = "[PATH]",
       })[entry.source.name]
       return vim_item
     end
@@ -35,10 +37,15 @@ cmp.setup {
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     }),
-    ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ['<CR>'] = cmp.mapping.confirm({
+      select = false,
+      behavior = cmp.ConfirmBehavior.Replace
+    }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
+    { name = 'treesitter' },
+    { name = 'path' },
     { name = 'luasnip' }, -- For luasnip users.
   }, {
     { name = 'buffer' },
@@ -51,13 +58,11 @@ cmp.setup {
 }
 
 -- Set configuration for specific filetype.
--- cmp.setup.filetype('gitcommit', {
---   sources = cmp.config.sources({
---     { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
---   }, {
---     { name = 'buffer' },
---   })
--- })
+cmp.setup.filetype('sql', {
+  sources = cmp.config.sources {
+    { name = 'vim-dadbod-completion' }, -- You can specify the `cmp_git` source if you were installed it.
+  }
+})
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline('/', {
