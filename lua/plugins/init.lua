@@ -157,20 +157,21 @@ return packer.startup(function()
 
   -- completion related
   use {
-    "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
-    config = "require('plugins.configs.nvim-cmp')",
-  }
-
-  use {
     "L3MON4D3/LuaSnip",
-    after = "nvim-cmp",
+    event = "InsertEnter",
     -- config = "require('plugins.configs.luasnip')",
   }
 
   use {
-    "saadparwaiz1/cmp_luasnip",
+    "hrsh7th/nvim-cmp",
     after = "LuaSnip",
+    config = "require('plugins.configs.nvim-cmp')",
+  }
+
+
+  use {
+    "saadparwaiz1/cmp_luasnip",
+    after = "nvim-cmp",
   }
 
   use {
