@@ -17,11 +17,6 @@ return packer.startup(function()
     event = "VimEnter",
   }
 
-  use {
-    "stevearc/dressing.nvim",
-    config = "require('plugins.configs.dressing')",
-  }
-
   use  {
     "navarasu/onedark.nvim",
     config = "require('plugins.configs.onedark')"
@@ -39,21 +34,15 @@ return packer.startup(function()
   }
 
   use {
-    "rcarriga/nvim-notify",
-    after = "dressing.nvim",
-    config = "require('plugins.configs.nvim-notify')",
-  }
-
-  use {
     'tpope/vim-sleuth',
     event = "BufRead",
   }
 
-  use {
-    "lukas-reineke/indent-blankline.nvim",
-    after = 'vim-sleuth',
-    config = "require('plugins.configs.blankline')",
-  }
+  -- use {
+  --   "lukas-reineke/indent-blankline.nvim",
+  --   after = 'vim-sleuth',
+  --   config = "require('plugins.configs.blankline')",
+  -- }
 
   use {
     "mg979/vim-visual-multi",
@@ -200,11 +189,11 @@ return packer.startup(function()
   }
 
   -- misc plugins
-  use {
-    "windwp/nvim-autopairs",
-    event = "InsertEnter",
-    config = "require('plugins.configs.others').autopairs()",
-  }
+  -- use {
+  --   "windwp/nvim-autopairs",
+  --   event = "InsertEnter",
+  --   config = "require('plugins.configs.others').autopairs()",
+  -- }
 
   use {
     "numToStr/Comment.nvim",
@@ -226,6 +215,16 @@ return packer.startup(function()
   }
 
   use {
+    "nvim-telescope/telescope.nvim",
+    opt = true,
+    config = "require('plugins.configs.telescope')",
+    setup = function()
+      require("core.utils").packer_lazy_load "telescope.nvim"
+      require("core.mappings").telescope()
+    end,
+  }
+
+  use {
     'nvim-telescope/telescope-fzf-native.nvim',
     after = "telescope.nvim",
     run = 'make',
@@ -235,14 +234,15 @@ return packer.startup(function()
   }
 
   use {
-    "nvim-telescope/telescope.nvim",
-    opt = true,
-    requires = { "nvim-telescope/telescope-fzf-native.nvim" },
-    config = "require('plugins.configs.telescope')",
-    setup = function()
-      require("core.utils").packer_lazy_load "telescope.nvim"
-      require("core.mappings").telescope()
-    end,
+    "stevearc/dressing.nvim",
+    after = "telescope.nvim",
+    config = "require('plugins.configs.dressing')",
+  }
+
+  use {
+    "rcarriga/nvim-notify",
+    after = "dressing.nvim",
+    config = "require('plugins.configs.nvim-notify')",
   }
 
   use {
