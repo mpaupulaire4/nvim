@@ -34,9 +34,9 @@ cmp.setup {
       return vim_item
     end
   },
-  mapping = {
-    ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+  mapping = cmp.mapping.preset.insert {
+    ['<PageUp>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+    ['<PageDown>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
     ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
     -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
     ['<C-y>'] = cmp.config.disable,
