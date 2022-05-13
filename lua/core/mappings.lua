@@ -23,6 +23,7 @@ M.misc = function()
 
   -- insert mode and completion related
   map("i", "<C-e>",   'pumvisible() ? "<C-e>" : "<C-c>"', { expr = true })
+  map("i", "<Esc>",   'pumvisible() ? "<C-e>" : "<C-c>"', { expr = true })
   map("i", "<BS>",    'pumvisible() ? "<C-e><BS>"  : "<BS>"', { expr = true })
   map("i", "<CR>",    'pumvisible() ? (complete_info().selected == -1 ? "<C-e><CR>" : "<C-y>") : "<CR>"', { expr = true })
   map("i", "<Tab>",   'pumvisible() ? "<C-n>" : "<Tab>"', { expr = true })
@@ -39,6 +40,7 @@ M.misc = function()
 
   -- use ESC to turn off search highlighting
   map("n", "<C-e>", ":noh <CR>")
+  map("n", "<Esc>", ":noh <CR>")
 
   -- yank from current cursor to end of line
   -- map("n", "Y", "yg$")
@@ -146,8 +148,8 @@ M.lspconfig = function()
    map("n", "<leader>p", "<cmd>lua vim.lsp.buf.formatting_sync()<CR>")
 end
 
-M.nvimtree = function()
-   map("n", "<C-n>", "<cmd>NvimTreeToggle <CR>")
+M.neotree = function()
+   map("n", "<C-n>", "<cmd>:Neotree filesystem float toggle reveal<CR>")
    -- map("n", plugin_maps.nvimtree.focus, ":NvimTreeFocus <CR>")
 end
 

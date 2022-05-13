@@ -17,7 +17,7 @@ return packer.startup(function()
     event = "VimEnter",
   }
 
-  use  {
+  use {
     "navarasu/onedark.nvim",
     config = "require('plugins.configs.onedark')"
   }
@@ -37,12 +37,6 @@ return packer.startup(function()
     'tpope/vim-sleuth',
     event = "BufRead",
   }
-
-  -- use {
-  --   "lukas-reineke/indent-blankline.nvim",
-  --   after = 'vim-sleuth',
-  --   config = "require('plugins.configs.blankline')",
-  -- }
 
   use {
     "mg979/vim-visual-multi",
@@ -128,10 +122,6 @@ return packer.startup(function()
     -- config = "require('plugins.configs.lspconfig')",
     config = function()
       require('plugins.configs.lspconfig')
-      -- reload the current file so lsp actually starts for it
-      vim.defer_fn(function()
-        vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
-      end, 0)
     end,
   }
 
@@ -188,13 +178,6 @@ return packer.startup(function()
     after = "nvim-cmp",
   }
 
-  -- misc plugins
-  -- use {
-  --   "windwp/nvim-autopairs",
-  --   event = "InsertEnter",
-  --   config = "require('plugins.configs.others').autopairs()",
-  -- }
-
   use {
     "numToStr/Comment.nvim",
     opt = true,
@@ -206,11 +189,16 @@ return packer.startup(function()
 
   -- file managing , picker etc
   use {
-    "kyazdani42/nvim-tree.lua",
-    cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-    config = "require('plugins.configs.nvimtree')",
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v2.x",
+    config = "require('plugins.configs.neotree')",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+    },
     setup = function()
-      require("core.mappings").nvimtree()
+      require("core.mappings").neotree()
     end,
   }
 
@@ -246,14 +234,6 @@ return packer.startup(function()
   }
 
   use {
-    'tknightz/telescope-termfinder.nvim',
-    after = { "telescope.nvim" , "toggleterm.nvim"},
-    config = function()
-      require('telescope').load_extension("termfinder")
-    end
-  }
-
-  use {
     "DanilaMihailov/beacon.nvim",
     opt = true,
     setup = function()
@@ -282,17 +262,13 @@ return packer.startup(function()
 
   use {
     "akinsho/toggleterm.nvim",
+    tag = 'v1.*',
     opt = true,
     config = "require('plugins.configs.toggleterm')",
     setup = function()
       require("core.utils").packer_lazy_load "toggleterm.nvim"
       require("core.mappings").toggleterm()
     end,
-  }
-
-  use {
-    "elkowar/yuck.vim",
-    ft = { "yuck" },
   }
 
   use {
@@ -311,8 +287,7 @@ return packer.startup(function()
 
   use {
     "kristijanhusak/vim-dadbod-completion",
-    after = {"vim-dadbod", "nvim-cmp"},
-    setup = "require('plugins.configs.dadbod')",
+    after = { "vim-dadbod", "nvim-cmp" },
   }
 
   use {

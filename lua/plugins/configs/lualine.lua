@@ -18,6 +18,7 @@ require('lualine').setup {
       "help",
       "dashboard",
       "NvimTree",
+      "neo-tree",
       "terminal",
       "dbui",
       "dbout",

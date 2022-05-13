@@ -18,5 +18,5 @@ vim.cmd [[ au TermOpen term://* setlocal nonumber norelativenumber | setfiletype
 --
 
 vim.cmd [[
-au FileType * if index([ 'help', 'terminal', 'dashboard', 'alpha', 'packer', 'lspinfo', 'TelescopePrompt', 'TelescopeResults'], &ft) >= 0 | let b:miniindentscope_disable=v:true | endif
+au FileType * if index([ 'help', 'terminal', 'neo-tree', 'dashboard', 'alpha', 'packer', 'lspinfo', 'TelescopePrompt', 'TelescopeResults'], &ft) >= 0 | let b:miniindentscope_disable=v:true | endif
 ]]
