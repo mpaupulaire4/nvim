@@ -103,6 +103,7 @@ return packer.startup(function()
     opt = true,
     setup = function()
       require("core.utils").packer_lazy_load "nvim-lspconfig"
+      require("core.mappings").lspconfig()
     end,
   }
 

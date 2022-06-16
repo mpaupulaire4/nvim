@@ -5,6 +5,18 @@ if not present then
 end
 
 ts_config.setup {
+  ensure_installed = {
+    "json",
+    "lua",
+    "javascript",
+    "typescript",
+    "css",
+    "ruby",
+    "rust",
+    "svelte",
+    "toml",
+    "vim"
+  },
   highlight = {
     enable = true,
     use_languagetree = true,
