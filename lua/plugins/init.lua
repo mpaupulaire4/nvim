@@ -86,12 +86,23 @@ return packer.startup(function()
 
   -- git stuff
   use {
-    "lewis6991/gitsigns.nvim",
+    'lewis6991/gitsigns.nvim',
     opt = true,
     config = "require('plugins.configs.gitsigns')",
     setup = function()
       require("core.utils").packer_lazy_load "gitsigns.nvim"
       require("core.mappings").gitsigns()
+    end,
+  }
+
+  use {
+    'sindrets/diffview.nvim',
+    opt = true,
+    requires = 'nvim-lua/plenary.nvim',
+    config = "require('plugins.configs.diffview')",
+    setup = function()
+      require("core.utils").packer_lazy_load "diffview.nvim"
+      require("core.mappings").diffview()
     end,
   }
 

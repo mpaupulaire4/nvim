@@ -114,6 +114,10 @@ M.mini = function()
    map("n", "<C-c>", "<cmd>lua MiniBufremove.delete()<CR>")
 end
 
+M.diffview = function()
+   map("n", "<leader>gd", "<cmd>DiffviewOpen<CR>")
+end
+
 -- M.comment = function()
 --    map("n", "<leader>/", ":lua require('Comment.api').toggle_current_linewise()<CR>")
 --    map("v", "<leader>/", ":lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>")
