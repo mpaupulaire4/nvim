@@ -119,6 +119,13 @@ return packer.startup(function()
   }
 
   use {
+    "jose-elias-alvarez/null-ls.nvim",
+    after = "nvim-lspconfig",
+    config = "require('plugins.configs.nullls')",
+    requires = "plenary.nvim",
+  }
+
+  use {
     "hrsh7th/cmp-nvim-lsp",
     after = "nvim-lspconfig",
   }

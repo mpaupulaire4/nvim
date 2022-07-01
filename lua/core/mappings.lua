@@ -145,9 +145,9 @@ M.lspconfig = function()
    map("n", "<leader>r", "<cmd>lua vim.lsp.buf.rename()<CR>")
    map("n", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>")
    -- map("n", m.references, "<cmd>lua vim.lsp.buf.references()<CR>")
-   -- map("n", m.float_diagnostics, "<cmd>lua vim.diagnostic.open_float()<CR>")
-   -- map("n", m.goto_prev, "<cmd>lua vim.diagnostic.goto_prev()<CR>")
-   -- map("n", m.goto_next, "<cmd>lua vim.diagnostic.goto_next()<CR>")
+   map("n", "<leader>dd", "<cmd>lua vim.diagnostic.open_float()<CR>")
+   map("n", "<leader>dp", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
+   map("n", "<leader>dn", "<cmd>lua vim.diagnostic.goto_next()<CR>")
    -- map("n", m.set_loclist, "<cmd>lua vim.diagnostic.setloclist()<CR>")
    map("n", "<leader>p", "<cmd>lua vim.lsp.buf.formatting_sync()<CR>")
 end
@@ -169,7 +169,7 @@ M.telescope = function()
    -- LSP related
    map("n", "gd", "<cmd>Telescope lsp_definitions<cr>")
    map("n", "gr", "<cmd>Telescope lsp_references<cr>")
-   -- map("n", "<leader>a", "<cmd>Telescope lsp_code_actions<cr>")
+   map("n", "<leader>da", "<cmd>Telescope diagnostics<cr>")
    map("n", "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>")
 end
 
