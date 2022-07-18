@@ -78,6 +78,7 @@ cmp.setup {
     { name = 'luasnip' }, -- For luasnip users.
   }, {
     { name = 'treesitter' },
+  }, {
     { name = 'buffer' },
   }),
   sorting = {

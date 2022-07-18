@@ -16,7 +16,7 @@ require('lualine').setup {
     section_separators = { left = '', right = '' },
     disabled_filetypes = {
       "help",
-      "dashboard",
+      "starter",
       "NvimTree",
       "neo-tree",
       "terminal",
@@ -101,7 +101,7 @@ require('lualine').setup {
     },
   },
   extensions = {
-    "nvim-tree",
+    "neo-tree",
     "toggleterm"
   },
 }

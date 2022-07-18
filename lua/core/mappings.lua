@@ -118,18 +118,12 @@ M.diffview = function()
    map("n", "<leader>gd", "<cmd>DiffviewOpen<CR>")
 end
 
--- M.comment = function()
---    map("n", "<leader>/", ":lua require('Comment.api').toggle_current_linewise()<CR>")
---    map("v", "<leader>/", ":lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>")
+-- M.dashboard = function()
+--    map("n", "<leader>fn", ":DashboardNewFile <CR>")
+--    map("n", "<leader>db", ":Dashboard <CR>")
+--    map("n", "<leader>l", ":SessionLoad <CR>")
+--    map("n", "<leader>s", ":SessionSave <CR>")
 -- end
-
-M.dashboard = function()
-   -- map("n", "<leader>bm", ":DashboardJumpMarks <CR>")
-   map("n", "<leader>fn", ":DashboardNewFile <CR>")
-   map("n", "<leader>db", ":Dashboard <CR>")
-   map("n", "<leader>l", ":SessionLoad <CR>")
-   map("n", "<leader>s", ":SessionSave <CR>")
-end
 
 M.lspconfig = function()
    -- See `:help vim.lsp.*` for documentation on any of the below functions

@@ -23,11 +23,6 @@ return packer.startup(function()
   }
 
   use {
-    'goolord/alpha-nvim',
-    config = "require('plugins.configs.dashboard')",
-  }
-
-  use {
     "kyazdani42/nvim-web-devicons",
     after = "onedark.nvim",
     config = "require('plugins.configs.icons')",
@@ -68,18 +63,15 @@ return packer.startup(function()
 
   use {
     'nvim-lualine/lualine.nvim',
-    event = "BufRead",
     requires = 'kyazdani42/nvim-web-devicons',
     config = "require('plugins.configs.lualine')"
   }
 
   use {
     'echasnovski/mini.nvim',
-    opt = true,
     branch = 'stable',
     config = "require('plugins.configs.mini')",
     setup = function()
-      require("core.utils").packer_lazy_load "mini.nvim"
       require("core.mappings").mini()
     end,
   }
@@ -133,6 +125,12 @@ return packer.startup(function()
   use {
     "simrat39/rust-tools.nvim",
     after = "nvim-lspconfig",
+  }
+
+  use {
+    "ray-x/lsp_signature.nvim",
+    after = "nvim-lspconfig",
+    config = "require('plugins.configs.signature')",
   }
 
   use {
