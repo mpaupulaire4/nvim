@@ -90,7 +90,8 @@ require('mini.indentscope').setup {
   symbol = '╎',
 }
 
-require('mini.starter').setup {
+local starter = require('mini.starter')
+starter.setup {
   -- Whether to open starter buffer on VimEnter. Not opened if Neovim was
   -- started with intent to show something else.
   autoopen = true,
@@ -103,7 +104,23 @@ require('mini.starter').setup {
   -- - Function: should return one of these three categories.
   -- - Array: elements of these three types (i.e. item, array, function).
   -- If `nil` (default), default items will be used (see |mini.starter|).
-  items = nil,
+  items = {
+    function()
+      local sess = require 'auto-session'
+      local files = sess.get_session_files()
+      return vim.tbl_map(function(entry)
+        return {
+          name = entry.display_name,
+          section = 'Sessions',
+          action = function ()
+            sess.RestoreSessionFromFile(entry.display_name)
+          end,
+        }
+      end, files)
+    end,
+    starter.sections.recent_files(10, true),
+    starter.sections.builtin_actions,
+  },
 
   -- Header to be displayed before items. Converted to single string via
   -- `tostring` (use `\n` to display several lines). If function, it is
@@ -118,7 +135,10 @@ require('mini.starter').setup {
   -- Array  of functions to be applied consecutively to initial content.
   -- Each function should take and return content for 'Starter' buffer (see
   -- |mini.starter| and |MiniStarter.content| for more details).
-  content_hooks = nil,
+  content_hooks = {
+    starter.gen_hook.aligning('center', 'center'),
+    -- starter.gen_hook.indexing('section'),
+  },
 
   -- Characters to update query. Each character will have special buffer
   -- mapping overriding your global ones. Be careful to not add `:` as it
