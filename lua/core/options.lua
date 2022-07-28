@@ -9,7 +9,7 @@ opt.cul = true -- cursor line
 
 -- disable tilde on end of buffer: https://github.com/neovim/neovim/pull/8546#issuecomment-643643758
 opt.fillchars = {
-  eob = " "
+   eob = " "
 }
 opt.hidden = true
 opt.ignorecase = true
@@ -39,6 +39,9 @@ opt.updatetime = 250
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append "<>[]hl"
+
+-- Sessions
+opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 
 g.mapleader = " "
 g.did_load_filetypes = 1

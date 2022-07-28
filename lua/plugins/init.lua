@@ -76,6 +76,15 @@ return packer.startup(function()
     end,
   }
 
+  -- sessions
+  use {
+    'rmagatti/auto-session',
+    config = "require('plugins.configs.session')",
+    setup = function()
+      require("core.mappings").session()
+    end,
+  }
+
   -- git stuff
   use {
     'lewis6991/gitsigns.nvim',
