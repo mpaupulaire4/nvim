@@ -118,7 +118,7 @@ starter.setup {
         }
       end, files)
     end,
-    starter.sections.recent_files(10, true),
+    starter.sections.recent_files(10, true, false),
     starter.sections.builtin_actions,
   },
 
