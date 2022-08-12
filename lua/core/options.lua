@@ -28,7 +28,7 @@ opt.shortmess:append "sI"
 opt.signcolumn = "yes"
 opt.splitbelow = true
 opt.splitright = true
-opt.tabstop = 8
+opt.tabstop = 2
 opt.termguicolors = true
 opt.timeoutlen = 400
 opt.undofile = true
