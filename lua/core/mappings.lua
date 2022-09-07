@@ -172,7 +172,7 @@ M.toggleterm = function()
 end
 
 M.dadbod = function()
-   map("n", "<leader>dd", "<cmd>DBUIToggle<CR>")
+   map("n", "<leader>db", "<cmd>DBUIToggle<CR>")
 end
 
 M.gitsigns = function()

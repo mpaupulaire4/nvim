@@ -42,7 +42,7 @@ return packer.startup(function()
   use {
     "norcalli/nvim-colorizer.lua",
     event = "BufRead",
-    config = "require('plugins.configs.others').colorizer()",
+    config = "require('plugins.configs.colorizer')",
   }
 
   use {
@@ -108,32 +108,47 @@ return packer.startup(function()
   }
 
   -- lsp stuff
+  use {
+    "williamboman/mason.nvim",
+    config = "require('plugins.configs.mason')"
+  }
+
+  use {
+    'WhoIsSethDaniel/mason-tool-installer.nvim',
+    config = "require('plugins.configs.mason-tools')",
+    after = "mason.nvim"
+  }
+
+  use {
+    "williamboman/mason-lspconfig.nvim",
+    after = "mason.nvim",
+    config = "require('plugins.configs.mason-lsp')"
+  }
+
+  use {
+    "hrsh7th/cmp-nvim-lsp",
+    after = "mason-lspconfig.nvim",
+  }
+
+  use {
+    "simrat39/rust-tools.nvim",
+    after = "mason-lspconfig.nvim",
+  }
 
   use {
     "neovim/nvim-lspconfig",
-    module = "lspconfig",
-    opt = true,
+    after = { "cmp-nvim-lsp", "rust-tools.nvim" },
+    config = "require('plugins.configs.lspconfig')",
     setup = function()
-      require("core.utils").packer_lazy_load "nvim-lspconfig"
       require("core.mappings").lspconfig()
     end,
   }
 
   use {
     "jose-elias-alvarez/null-ls.nvim",
-    after = "nvim-lspconfig",
+    after = "mason-lspconfig.nvim",
     config = "require('plugins.configs.nullls')",
     requires = "plenary.nvim",
-  }
-
-  use {
-    "hrsh7th/cmp-nvim-lsp",
-    after = "nvim-lspconfig",
-  }
-
-  use {
-    "simrat39/rust-tools.nvim",
-    after = "nvim-lspconfig",
   }
 
   use {
@@ -141,16 +156,6 @@ return packer.startup(function()
     after = "nvim-lspconfig",
     config = "require('plugins.configs.signature')",
   }
-
-  use {
-    "williamboman/nvim-lsp-installer",
-    after = "cmp-nvim-lsp",
-    -- config = "require('plugins.configs.lspconfig')",
-    config = function()
-      require('plugins.configs.lspconfig')
-    end,
-  }
-
 
   use {
     "andymass/vim-matchup",

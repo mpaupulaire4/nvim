@@ -24,51 +24,44 @@ vim.diagnostic.config {
 --   border = "single",
 -- })
 
-local function on_attach(_, _)
-   -- local function buf_set_option(...)
-   --    vim.api.nvim_buf_set_option(bufnr, ...)
-   -- end
-   --
-   -- -- Enable completion triggered by <c-x><c-o>
-   -- buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-   require("core.mappings").lspconfig()
-end
+-- local function on_attach(_, _)
+--    -- local function buf_set_option(...)
+--    --    vim.api.nvim_buf_set_option(bufnr, ...)
+--    -- end
+--    --
+--    -- -- Enable completion triggered by <c-x><c-o>
+--    -- buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+--    require("core.mappings").lspconfig()
+-- end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-local lsp_installer = require "nvim-lsp-installer"
+local lspconfig = require "lspconfig"
 
-lsp_installer.settings {
-  ui = {
-    icons = {
-      server_installed ="✓",
-      server_pending = "",
-      server_uninstalled = "✗",
-    },
-  },
+lspconfig["cssls"].setup {
+  capabilities = capabilities
 }
 
-lsp_installer.on_server_ready(function(server)
-  local opts = {
-    on_attach = on_attach,
+lspconfig["html"].setup {
+  capabilities = capabilities
+}
+
+lspconfig["tsserver"].setup {
+  capabilities = capabilities
+}
+
+lspconfig["sumneko_lua"].setup {
+  capabilities = capabilities
+}
+
+lspconfig["svelte"].setup {
+  capabilities = capabilities
+}
+
+require("rust-tools").setup({
+  server = {
+    standalone = false,
     capabilities = capabilities,
-    flags = {
-      debounce_text_changes = 150,
-    },
-  }
-  if server.name == "rust_analyzer" then
-    -- Initialize the LSP via rust-tools instead
-    require("rust-tools").setup {
-      -- The "server" property provided in rust-tools setup function are the
-      -- settings rust-tools will provide to lspconfig during init.            --
-      -- We merge the necessary settings from nvim-lsp-installer (server:get_default_options())
-      -- with the user's own settings (opts).
-      server = vim.tbl_deep_extend("force", server:get_default_options(), opts),
-    }
-    server:attach_buffers()
-  else
-    server:setup(opts)
-  end
-  vim.cmd [[ do User LspAttachBuffers ]]
-end)
+  },
+})
