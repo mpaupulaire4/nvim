@@ -372,3 +372,7 @@ require("neo-tree").setup {
     },
   },
 }
+
+local map = require('core.utils').map
+map("n", "<C-n>", "<cmd>:Neotree filesystem float toggle reveal<CR>")
+-- map("n", plugin_maps.nvimtree.focus, ":NvimTreeFocus <CR>")

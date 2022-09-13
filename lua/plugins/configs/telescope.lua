@@ -100,3 +100,19 @@ pcall(function()
     telescope.load_extension(ext)
   end
 end)
+
+
+local map = require('core.utils').map
+map("n", "<leader>fb", "<cmd>Telescope buffers <CR>")
+map("n", "<leader>ff", "<cmd>Telescope find_files <CR>")
+map("n", "<leader>fa", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true <CR>")
+map("n", "<leader>fh", "<cmd>Telescope help_tags <CR>")
+map("n", "<leader>fw", "<cmd>Telescope live_grep <CR>")
+map("n", "<leader>fo", "<cmd>Telescope oldfiles <CR>")
+map("n", "<leader>ft", "<cmd>Telescope termfinder find <CR>")
+
+-- LSP related
+map("n", "gd", "<cmd>Telescope lsp_definitions<cr>")
+map("n", "gr", "<cmd>Telescope lsp_references<cr>")
+map("n", "<leader>da", "<cmd>Telescope diagnostics<cr>")
+map("n", "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>")

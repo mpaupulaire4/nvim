@@ -71,41 +71,34 @@ return packer.startup(function()
     'echasnovski/mini.nvim',
     branch = 'stable',
     config = "require('plugins.configs.mini')",
-    setup = function()
-      require("core.mappings").mini()
-    end,
   }
 
   -- sessions
   use {
     'rmagatti/auto-session',
     config = "require('plugins.configs.session')",
-    setup = function()
-      require("core.mappings").session()
-    end,
-  }
-
-  -- git stuff
-  use {
-    'lewis6991/gitsigns.nvim',
-    opt = true,
-    config = "require('plugins.configs.gitsigns')",
-    setup = function()
-      require("core.utils").packer_lazy_load "gitsigns.nvim"
-      require("core.mappings").gitsigns()
-    end,
   }
 
   use {
-    'sindrets/diffview.nvim',
-    opt = true,
-    requires = 'nvim-lua/plenary.nvim',
-    config = "require('plugins.configs.diffview')",
+    'tanvirtin/vgit.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim'
+    },
+    config = "require('plugins.configs.vgit')",
     setup = function()
-      require("core.utils").packer_lazy_load "diffview.nvim"
-      require("core.mappings").diffview()
+      require("core.utils").packer_lazy_load "vgit.nvim"
     end,
   }
+
+  -- use {
+  --   'sindrets/diffview.nvim',
+  --   opt = true,
+  --   requires = 'nvim-lua/plenary.nvim',
+  --   config = "require('plugins.configs.diffview')",
+  --   setup = function()
+  --     require("core.utils").packer_lazy_load "diffview.nvim"
+  --   end,
+  -- }
 
   -- lsp stuff
   use {
@@ -139,9 +132,6 @@ return packer.startup(function()
     "neovim/nvim-lspconfig",
     after = { "cmp-nvim-lsp", "rust-tools.nvim" },
     config = "require('plugins.configs.lspconfig')",
-    setup = function()
-      require("core.mappings").lspconfig()
-    end,
   }
 
   use {
@@ -228,9 +218,6 @@ return packer.startup(function()
       "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
     },
-    setup = function()
-      require("core.mappings").neotree()
-    end,
   }
 
   use {
@@ -239,7 +226,6 @@ return packer.startup(function()
     config = "require('plugins.configs.telescope')",
     setup = function()
       require("core.utils").packer_lazy_load "telescope.nvim"
-      require("core.mappings").telescope()
     end,
   }
 
@@ -278,7 +264,6 @@ return packer.startup(function()
     config = "require('plugins.configs.focus')",
     setup = function()
       require("core.utils").packer_lazy_load "focus.nvim"
-      require("core.mappings").focus()
     end,
   }
 
@@ -298,7 +283,6 @@ return packer.startup(function()
     config = "require('plugins.configs.toggleterm')",
     setup = function()
       require("core.utils").packer_lazy_load "toggleterm.nvim"
-      require("core.mappings").toggleterm()
     end,
   }
 

@@ -5,3 +5,8 @@ require('auto-session').setup {
   auto_session_enabled = false,
   auto_save_enabled = true,
 }
+
+local map = require('core.utils').map
+map("n", "<leader>sd", ":Autosession delete <CR>")
+map("n", "<leader>sl", ":Autosession search <CR>")
+map("n", "<leader>ss", ":SaveSession <CR>")

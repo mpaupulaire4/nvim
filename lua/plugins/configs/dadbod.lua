@@ -1,4 +1,4 @@
-local mappings = require "core.mappings"
+local map = require("core.utils").map
 vim.g.db_ui_table_helpers = {
 
 }
@@ -14,4 +14,4 @@ vim.g.db_ui_icons = {
     connection_error = '',
 }
 
-mappings.dadbod();
+map("n", "<leader>db", "<cmd>DBUIToggle<CR>")

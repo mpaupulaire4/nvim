@@ -10,9 +10,3 @@ for _, module in ipairs(core_modules) do
       error("Error loading " .. module .. "\n\n" .. err)
    end
 end
-
--- non plugin mappings
-require("core.mappings").misc()
-
--- try to call custom init
-pcall(require, "custom")

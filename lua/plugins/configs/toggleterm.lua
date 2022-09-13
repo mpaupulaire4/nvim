@@ -1,5 +1,5 @@
 local toggleterm = require('toggleterm')
-local Terminal  = require('toggleterm.terminal').Terminal
+local Terminal   = require('toggleterm.terminal').Terminal
 
 local lazygit = Terminal:new({
   cmd = "lazygit",
@@ -7,18 +7,8 @@ local lazygit = Terminal:new({
   direction = "tab",
 })
 
-local lazydocker = Terminal:new({
-  cmd = "lazydocker",
-  hidden = true,
-  direction = "tab",
-})
-
-function _G._lazygit_toggle()
+local function toggle_lazygit()
   lazygit:toggle()
-end
-
-function _G._lazydocker_toggle()
-  lazydocker:toggle()
 end
 
 toggleterm.setup {
@@ -31,8 +21,8 @@ toggleterm.setup {
   --   end
   -- end,
   open_mapping = [[<leader>t]],
-  on_open = function(t)  -- function to run when the terminal opens
-    local opts = {noremap = true}
+  on_open = function(t) -- function to run when the terminal opens
+    local opts = { noremap = true }
     vim.api.nvim_buf_set_keymap(t.bufnr, 't', '<c-e>', [[<C-\><C-n>]], opts)
     vim.api.nvim_buf_set_keymap(t.bufnr, 'n', '<c-e>', '<cmd>ToggleTerm<cr>', opts)
   end,
@@ -66,3 +56,6 @@ toggleterm.setup {
   }
 }
 
+
+local map = require('core.utils').map
+map("n", "<leader>gs", toggle_lazygit)

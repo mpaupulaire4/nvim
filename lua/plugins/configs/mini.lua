@@ -1,3 +1,4 @@
+local map = require('core.utils').map
 local logo = [[
          ⣴⣶⣤⡤⠦⣤⣀⣤⠆     ⣈⣭⣿⣶⣿⣦⣼⣆
           ⠉⠻⢿⣿⠿⣿⣿⣶⣦⠤⠄⡠⢾⣿⣿⡿⠋⠉⠉⠻⣿⣿⡛⣦
@@ -42,6 +43,8 @@ require('mini.trailspace').setup {
 vim.cmd [[ autocmd BufWrite * lua MiniTrailspace.trim() ]]
 
 require('mini.bufremove').setup {}
+
+map("n", "<C-c>", MiniBufremove.delete)
 
 require('mini.pairs').setup {}
 
@@ -112,7 +115,7 @@ starter.setup {
         return {
           name = entry.display_name,
           section = 'Sessions',
-          action = function ()
+          action = function()
             sess.RestoreSessionFromFile(entry.display_name)
           end,
         }

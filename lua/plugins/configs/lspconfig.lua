@@ -65,3 +65,22 @@ require("rust-tools").setup({
     capabilities = capabilities,
   },
 })
+local map = require('core.utils').map
+-- See `:help vim.lsp.*` for documentation on any of the below functions
+-- map("n", m.declaration,  vim.lsp.buf.declaration)
+-- map("n", m.definition,  vim.lsp.buf.definition)
+map("n", "H", vim.lsp.buf.hover)
+-- map("n", m.implementation,  vim.lsp.buf.implementation)
+map("n", "L", vim.lsp.buf.signature_help)
+-- map("n", m.add_workspace_folder,  vim.lsp.buf.add_workspace_folder)
+-- map("n", m.remove_workspace_folder,  vim.lsp.buf.remove_workspace_folder)
+-- map("n", m.list_workspace_folders,  print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>")
+-- map("n", m.type_definition,  vim.lsp.buf.type_definition)
+map("n", "<leader>r", vim.lsp.buf.rename)
+map("n", "<leader>a", vim.lsp.buf.code_action)
+-- map("n", m.references,  vim.lsp.buf.references)
+map("n", "<leader>dd", vim.diagnostic.open_float)
+map("n", "<leader>dp", vim.diagnostic.goto_prev)
+map("n", "<leader>dn", vim.diagnostic.goto_next)
+-- map("n", m.set_loclist,  vim.diagnostic.setloclist)
+map("n", "<leader>p", vim.lsp.buf.formatting_sync)
