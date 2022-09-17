@@ -17,6 +17,9 @@ ts_config.setup {
     "toml",
     "vim"
   },
+  autotag = {
+    enable = true,
+  },
   highlight = {
     enable = true,
     use_languagetree = true,

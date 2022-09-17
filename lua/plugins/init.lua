@@ -62,6 +62,11 @@ return packer.startup(function()
   }
 
   use {
+    "windwp/nvim-ts-autotag",
+    after = 'nvim-treesitter'
+  }
+
+  use {
     'nvim-lualine/lualine.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
     config = "require('plugins.configs.lualine')"
