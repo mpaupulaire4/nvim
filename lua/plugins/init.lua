@@ -67,6 +67,12 @@ return packer.startup(function()
   }
 
   use {
+    'nvim-treesitter/nvim-treesitter-context',
+    config = "require('plugins.configs.context')",
+    after = 'nvim-treesitter'
+  }
+
+  use {
     'nvim-lualine/lualine.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
     config = "require('plugins.configs.lualine')"
