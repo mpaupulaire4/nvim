@@ -17,27 +17,8 @@ vim.diagnostic.config {
   update_in_insert = false,
 }
 
--- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
---   border = "single",
--- })
--- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
---   border = "single",
--- })
-
--- local function on_attach(_, _)
---    -- local function buf_set_option(...)
---    --    vim.api.nvim_buf_set_option(bufnr, ...)
---    -- end
---    --
---    -- -- Enable completion triggered by <c-x><c-o>
---    -- buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
---    require("core.mappings").lspconfig()
--- end
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-
 local lspconfig = require "lspconfig"
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 lspconfig["cssls"].setup {
   capabilities = capabilities
@@ -51,8 +32,14 @@ lspconfig["html"].setup {
   capabilities = capabilities
 }
 
+lspconfig["denols"].setup {
+  capabilities = capabilities,
+  root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc")
+}
+
 lspconfig["tsserver"].setup {
-  capabilities = capabilities
+  capabilities = capabilities,
+  root_dir = lspconfig.util.root_pattern("package.json", "jsconfig.jsonc")
 }
 
 lspconfig["sumneko_lua"].setup {
@@ -69,6 +56,7 @@ require("rust-tools").setup({
     capabilities = capabilities,
   },
 })
+
 local map = require('core.utils').map
 -- See `:help vim.lsp.*` for documentation on any of the below functions
 -- map("n", m.declaration,  vim.lsp.buf.declaration)
@@ -87,4 +75,4 @@ map("n", "<leader>dd", vim.diagnostic.open_float)
 map("n", "<leader>dp", vim.diagnostic.goto_prev)
 map("n", "<leader>dn", vim.diagnostic.goto_next)
 -- map("n", m.set_loclist,  vim.diagnostic.setloclist)
-map("n", "<leader>p", vim.lsp.buf.formatting_sync)
+map("n", "<leader>p", vim.lsp.buf.format)

@@ -5,11 +5,6 @@ local luasnip = require('luasnip')
 
 vim.opt.completeopt = "menuone,noselect"
 
-local has_words_before = function()
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
-
 cmp.setup {
   snippet = {
     -- REQUIRED - you must specify a snippet engine
@@ -19,6 +14,15 @@ cmp.setup {
   },
   formatting = {
     format = function(entry, vim_item)
+      if vim.tbl_contains({ 'path' }, entry.source.name) then
+        local icon, hl_group = require('nvim-web-devicons').get_icon(entry:get_completion_item().label)
+        if icon then
+          vim_item.kind = icon
+          vim_item.kind_hl_group = hl_group
+          return vim_item
+        end
+      end
+
       -- Kind icons
       -- This concatonates the icons with the name of the item kind
       vim_item.kind = string.format('%s %s', lspkind_icons[vim_item.kind], vim_item.kind)
@@ -29,7 +33,6 @@ cmp.setup {
         nvim_lsp = "[LSP]",
         luasnip = "[Snip]",
         nvim_lua = "[VIM]",
-        path = "[PATH]",
       })[entry.source.name]
       return vim_item
     end
@@ -55,8 +58,6 @@ cmp.setup {
         cmp.select_next_item()
       elseif luasnip.expand_or_locally_jumpable() then
         luasnip.expand_or_jump()
-      elseif has_words_before() then
-        cmp.complete()
       else
         fallback()
       end
