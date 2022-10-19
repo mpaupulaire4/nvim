@@ -44,7 +44,7 @@ vim.cmd [[ autocmd BufWrite * lua MiniTrailspace.trim() ]]
 
 require('mini.bufremove').setup {}
 
-map("n", "<C-c>", MiniBufremove.delete)
+map("n", "<C-x>", MiniBufremove.delete)
 
 require('mini.pairs').setup {}
 

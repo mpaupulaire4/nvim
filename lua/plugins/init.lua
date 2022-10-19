@@ -90,26 +90,35 @@ return packer.startup(function()
     config = "require('plugins.configs.session')",
   }
 
+  -- use {
+  --   'tanvirtin/vgit.nvim',
+  --   requires = {
+  --     'nvim-lua/plenary.nvim'
+  --   },
+  --   config = "require('plugins.configs.vgit')",
+  --   setup = function()
+  --     require("core.utils").packer_lazy_load "vgit.nvim"
+  --   end,
+  -- }
+  --
   use {
-    'tanvirtin/vgit.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim'
-    },
-    config = "require('plugins.configs.vgit')",
+    'lewis6991/gitsigns.nvim',
+    tag = 'release',
+    config = "require('plugins.configs.gitsigns')",
     setup = function()
-      require("core.utils").packer_lazy_load "vgit.nvim"
+      require("core.utils").packer_lazy_load "gitsigns.nvim"
     end,
   }
 
-  -- use {
-  --   'sindrets/diffview.nvim',
-  --   opt = true,
-  --   requires = 'nvim-lua/plenary.nvim',
-  --   config = "require('plugins.configs.diffview')",
-  --   setup = function()
-  --     require("core.utils").packer_lazy_load "diffview.nvim"
-  --   end,
-  -- }
+  use {
+    'sindrets/diffview.nvim',
+    opt = true,
+    requires = 'nvim-lua/plenary.nvim',
+    config = "require('plugins.configs.diffview')",
+    setup = function()
+      require("core.utils").packer_lazy_load "diffview.nvim"
+    end,
+  }
 
   -- lsp stuff
   use {
@@ -269,15 +278,15 @@ return packer.startup(function()
     end
   }
 
-  use {
-    "beauwilliams/focus.nvim",
-    opt = true,
-    config = "require('plugins.configs.focus')",
-    setup = function()
-      require("core.utils").packer_lazy_load "focus.nvim"
-    end,
-  }
-
+  -- use {
+  --   "beauwilliams/focus.nvim",
+  --   opt = true,
+  --   config = "require('plugins.configs.focus')",
+  --   setup = function()
+  --     require("core.utils").packer_lazy_load "focus.nvim"
+  --   end,
+  -- }
+  --
   use {
     'luukvbaal/stabilize.nvim',
     opt = true,

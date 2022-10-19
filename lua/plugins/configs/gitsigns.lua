@@ -12,18 +12,24 @@ gitsigns.setup {
   current_line_blame_formatter_opts = {
     relative_time = true
   },
-}
+  on_attach = function(bufnr)
+    local gs = package.loaded.gitsigns
 
-local map = require('core.utils').map
-map("n", "<leader>gb", "<Cmd>Gitsigns toggle_current_line_blame<CR>")
-map("n", "<leader>hs", "<cmd>Gitsigns stage_hunk<CR>")
-map("v", "<leader>hs", ":Gitsigns stage_hunk<CR>")
-map("n", "<leader>hu", "<cmd>Gitsigns undo_stage_hunk<CR>")
-map("n", "<leader>hr", "<cmd>Gitsigns reset_hunk<CR>")
-map("v", "<leader>hr", ":Gitsigns reset_hunk<CR>")
-map("n", "<leader>hR", "<cmd>Gitsigns reset_buffer<CR>")
-map("n", "<leader>hd", "<cmd>Gitsigns preview_hunk<CR>")
-map("n", "<leader>hS", "<cmd>Gitsigns stage_buffer<CR>")
-map("n", "<leader>hU", "<cmd>Gitsigns reset_buffer_index<CR>")
-map("n", "<leader>hn", "<cmd>Gitsigns next_hunk<CR>")
-map("n", "<leader>hp", "<cmd>Gitsigns prev_hunk<CR>")
+    local function map(mode, l, r, opts)
+      opts = opts or {}
+      opts.buffer = bufnr
+      require('core.utils').map(mode, l, r, opts)
+    end
+
+    map({ "v", "n" }, "<leader>hs", gs.stage_hunk)
+    map({ "v", "n" }, "<leader>hr", gs.reset_hunk)
+    map("n", "<leader>gb", gs.toggle_current_line_blame)
+    map("n", "<leader>hu", gs.undo_stage_hunk)
+    map("n", "<leader>hR", gs.reset_buffer)
+    map("n", "<leader>hd", gs.preview_hunk)
+    map("n", "<leader>hS", gs.stage_buffer)
+    map("n", "<leader>hU", gs.reset_buffer_index)
+    map("n", "<leader>hn", gs.next_hunk)
+    map("n", "<leader>hp", gs.prev_hunk)
+  end,
+}
