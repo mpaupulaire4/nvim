@@ -6,6 +6,13 @@ end
 
 local use = packer.use
 
+-- TODO setup octo.nvim
+-- TODO setup and test marks.nvim
+-- TODO setup and test leap.nvim
+-- TODO setup and test incline.nvim
+-- TODO setup and test syntax-tree-surfer
+-- TODO setup and test nvim-navic in tabline
+-- TODO setup and write plugins around instant.nvim for code pairing
 return packer.startup(function()
 
   -- this is arranged on the basis of when a plugin starts
@@ -78,6 +85,7 @@ return packer.startup(function()
     config = "require('plugins.configs.lualine')"
   }
 
+  -- TODO break up and import only used plugins
   use {
     'echasnovski/mini.nvim',
     branch = 'stable',
@@ -90,6 +98,18 @@ return packer.startup(function()
     config = "require('plugins.configs.session')",
   }
 
+  -- Git
+  use {
+    'akinsho/git-conflict.nvim',
+    opt = true,
+    tag = "*",
+    config = "require('plugins.configs.gitconflict')",
+    setup = function()
+      require("core.utils").packer_lazy_load "git-conflict.nvim"
+    end,
+  }
+
+  -- TODO look into refactoring this to use nui and make it prettier/ better to use maybe even add lazygit features
   -- use {
   --   'tanvirtin/vgit.nvim',
   --   requires = {
@@ -100,10 +120,10 @@ return packer.startup(function()
   --     require("core.utils").packer_lazy_load "vgit.nvim"
   --   end,
   -- }
-  --
+
   use {
     'lewis6991/gitsigns.nvim',
-    tag = 'release',
+    opt = true,
     config = "require('plugins.configs.gitsigns')",
     setup = function()
       require("core.utils").packer_lazy_load "gitsigns.nvim"
