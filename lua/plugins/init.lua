@@ -86,7 +86,7 @@ return packer.startup(function()
 
   -- sessions
   use {
-    'rmagatti/auto-session',
+    'olimorris/persisted.nvim',
     config = "require('plugins.configs.session')",
   }
 
@@ -242,6 +242,7 @@ return packer.startup(function()
 
   use {
     "nvim-telescope/telescope.nvim",
+    module = "telescope",
     opt = true,
     config = "require('plugins.configs.telescope')",
     setup = function()
@@ -298,7 +299,7 @@ return packer.startup(function()
 
   use {
     "akinsho/toggleterm.nvim",
-    tag = 'v1.*',
+    tag = 'v2.*',
     opt = true,
     config = "require('plugins.configs.toggleterm')",
     setup = function()

@@ -109,14 +109,17 @@ starter.setup {
   -- If `nil` (default), default items will be used (see |mini.starter|).
   items = {
     function()
-      local sess = require 'auto-session'
-      local files = sess.get_session_files()
+      local sess = require 'persisted'
+      local utils = require 'persisted.utils'
+      local files = sess.list()
+
       return vim.tbl_map(function(entry)
         return {
-          name = entry.display_name,
+          name = entry.name,
           section = 'Sessions',
           action = function()
-            sess.RestoreSessionFromFile(entry.display_name)
+            vim.g.persisting_session = entry.file_path
+            utils.load_session(entry.file_path)
           end,
         }
       end, files)
