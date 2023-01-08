@@ -6,16 +6,11 @@ end
 
 local use = packer.use
 
--- TODO setup octo.nvim
--- TODO setup and test marks.nvim
 -- TODO setup and test leap.nvim
--- TODO setup and test incline.nvim
 -- TODO setup and test syntax-tree-surfer
 -- TODO setup and test nvim-navic in tabline
 -- TODO setup and write plugins around instant.nvim for code pairing
 return packer.startup(function()
-
-  -- this is arranged on the basis of when a plugin starts
   use "nathom/filetype.nvim"
   use "nvim-lua/plenary.nvim"
 
@@ -27,6 +22,17 @@ return packer.startup(function()
   use {
     "navarasu/onedark.nvim",
     config = "require('plugins.configs.onedark')"
+  }
+
+  use {
+    "b0o/incline.nvim",
+    config = "require('plugins.configs.incline')"
+  }
+
+  use {
+    "nvim-zh/colorful-winsep.nvim",
+    after = "incline.nvim",
+    config = "require('plugins.configs.winsep')"
   }
 
   use {
@@ -99,6 +105,20 @@ return packer.startup(function()
   }
 
   -- Git
+  use {
+    'pwntester/octo.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+      'kyazdani42/nvim-web-devicons',
+    },
+    config = "require('plugins.configs.octo')",
+    opt = true,
+    setup = function()
+      require("core.utils").packer_lazy_load "octo.nvim"
+    end,
+  }
+
   use {
     'akinsho/git-conflict.nvim',
     opt = true,
@@ -199,7 +219,6 @@ return packer.startup(function()
   use {
     "L3MON4D3/LuaSnip",
     event = "InsertEnter",
-    -- config = "require('plugins.configs.luasnip')",
   }
 
   use {
@@ -291,13 +310,13 @@ return packer.startup(function()
     config = "require('plugins.configs.nvim-notify')",
   }
 
-  use {
-    "DanilaMihailov/beacon.nvim",
-    opt = true,
-    setup = function()
-      require("core.utils").packer_lazy_load "beacon.nvim"
-    end
-  }
+  -- use {
+  --   "DanilaMihailov/beacon.nvim",
+  --   opt = true,
+  --   setup = function()
+  --     require("core.utils").packer_lazy_load "beacon.nvim"
+  --   end
+  -- }
 
   -- use {
   --   "beauwilliams/focus.nvim",
@@ -327,24 +346,24 @@ return packer.startup(function()
     end,
   }
 
-  use {
-    "tpope/vim-dadbod",
-    opt = true,
-    setup = function()
-      require("core.utils").packer_lazy_load "vim-dadbod"
-    end,
-  }
-
-  use {
-    "kristijanhusak/vim-dadbod-ui",
-    after = "vim-dadbod",
-    setup = "require('plugins.configs.dadbod')",
-  }
-
-  use {
-    "kristijanhusak/vim-dadbod-completion",
-    after = { "vim-dadbod", "nvim-cmp" },
-  }
+  -- use {
+  --   "tpope/vim-dadbod",
+  --   opt = true,
+  --   setup = function()
+  --     require("core.utils").packer_lazy_load "vim-dadbod"
+  --   end,
+  -- }
+  --
+  -- use {
+  --   "kristijanhusak/vim-dadbod-ui",
+  --   after = "vim-dadbod",
+  --   setup = "require('plugins.configs.dadbod')",
+  -- }
+  --
+  -- use {
+  --   "kristijanhusak/vim-dadbod-completion",
+  --   after = { "vim-dadbod", "nvim-cmp" },
+  -- }
 
   use {
     'saecki/crates.nvim',
@@ -352,6 +371,15 @@ return packer.startup(function()
     event = { "BufRead Cargo.toml" },
     requires = { 'nvim-lua/plenary.nvim' },
     config = "require('plugins.configs.crates')",
+  }
+
+  use {
+    "chentoast/marks.nvim",
+    opt = true,
+    config = "require('plugins.configs.marks')",
+    setup = function()
+      require("core.utils").packer_lazy_load "marks.nvim"
+    end,
   }
 
 end)
