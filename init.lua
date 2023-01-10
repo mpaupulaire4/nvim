@@ -10,3 +10,17 @@ for _, module in ipairs(core_modules) do
       error("Error loading " .. module .. "\n\n" .. err)
    end
 end
+
+local lazypath = vim.fn.stdpath("data") .. "/lazy"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+
+require("lazy").setup("plugins")

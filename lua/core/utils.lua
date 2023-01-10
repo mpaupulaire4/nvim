@@ -1,11 +1,6 @@
 local M = {}
 
 M.map = function(mode, keys, command, opt)
-   local options = { noremap = true }
-   if opt then
-      options = vim.tbl_extend("force", options, opt)
-   end
-
    vim.keymap.set(mode, keys, command, opt)
 end
 

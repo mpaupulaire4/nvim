@@ -5,6 +5,7 @@ if not present then
 end
 
 local actions = require("telescope.actions")
+-- TODO add lazy loading on command
 
 telescope.setup {
   defaults = {
@@ -98,12 +99,11 @@ telescope.setup {
 }
 
 local extensions = { "notify", "persisted" }
-
-pcall(function()
-  for _, ext in ipairs(extensions) do
+for _, ext in ipairs(extensions) do
+  pcall(function()
     telescope.load_extension(ext)
-  end
-end)
+  end)
+end
 
 
 local map = require('core.utils').map
