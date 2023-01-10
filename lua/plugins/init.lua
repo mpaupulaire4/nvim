@@ -22,7 +22,6 @@ return {
   {
     'nmac427/guess-indent.nvim',
     event = "BufRead",
-    lazy = true,
     config = true,
   },
 
@@ -35,281 +34,206 @@ return {
   -- }
 
   -- Git
-  {
-    'pwntester/octo.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope.nvim',
-      'kyazdani42/nvim-web-devicons',
-    },
-    config = "require('plugins.configs.octo')",
-    opt = true,
-    setup = function()
-      require("core.utils").packer_lazy_load "octo.nvim"
-    end,
-  }
-
-  {
-    'akinsho/git-conflict.nvim',
-    opt = true,
-    tag = "*",
-    config = "require('plugins.configs.gitconflict')",
-    setup = function()
-      require("core.utils").packer_lazy_load "git-conflict.nvim"
-    end,
-  }
-
   -- TODO look into refactoring this to use nui and make it prettier/ better to use maybe even add lazygit features
-  -- use {
-    --   'tanvirtin/vgit.nvim',
-    --   requires = {
-      --     'nvim-lua/plenary.nvim'
-      --   },
-      --   config = "require('plugins.configs.vgit')",
-      --   setup = function()
-        --     require("core.utils").packer_lazy_load "vgit.nvim"
-        --   end,
-        -- }
-
-        use {
-          'lewis6991/gitsigns.nvim',
-          opt = true,
-          config = "require('plugins.configs.gitsigns')",
-          setup = function()
-            require("core.utils").packer_lazy_load "gitsigns.nvim"
-          end,
-        }
-
-        use {
-          'sindrets/diffview.nvim',
-          opt = true,
-          requires = 'nvim-lua/plenary.nvim',
-          config = "require('plugins.configs.diffview')",
-          setup = function()
-            require("core.utils").packer_lazy_load "diffview.nvim"
-          end,
-        }
-
-        -- lsp stuff
-        use {
-          "williamboman/mason.nvim",
-          config = "require('plugins.configs.mason')"
-        }
-
-        use {
-          'WhoIsSethDaniel/mason-tool-installer.nvim',
-          config = "require('plugins.configs.mason-tools')",
-          after = "mason.nvim"
-        }
-
-        use {
-          "williamboman/mason-lspconfig.nvim",
-          after = "mason.nvim",
-          config = "require('plugins.configs.mason-lsp')"
-        }
-
-        use {
-          "hrsh7th/cmp-nvim-lsp",
-          after = "mason-lspconfig.nvim",
-        }
-
-        use {
-          "simrat39/rust-tools.nvim",
-          after = "mason-lspconfig.nvim",
-        }
-
-        use {
-          "neovim/nvim-lspconfig",
-          after = { "cmp-nvim-lsp", "rust-tools.nvim" },
-          config = "require('plugins.configs.lspconfig')",
-        }
-
-        use {
-          "jose-elias-alvarez/null-ls.nvim",
-          after = "mason-lspconfig.nvim",
-          config = "require('plugins.configs.nullls')",
-          requires = "plenary.nvim",
-        }
-
-        use {
-          "ray-x/lsp_signature.nvim",
-          after = "nvim-lspconfig",
-          config = "require('plugins.configs.signature')",
-        }
-
-        use {
-          "andymass/vim-matchup",
-          opt = true,
-          setup = function()
-            require("core.utils").packer_lazy_load "vim-matchup"
-          end,
-        }
-
-        -- completion related
-        use {
-          "L3MON4D3/LuaSnip",
-          event = "InsertEnter",
-        }
-
-        use {
-          "hrsh7th/nvim-cmp",
-          after = "LuaSnip",
-          config = "require('plugins.configs.nvim-cmp')",
-        }
+  -- {
+  --   'tanvirtin/vgit.nvim',
+  --   requires = {
+  --     'nvim-lua/plenary.nvim'
+  --   },
+  --   config = "require('plugins.configs.vgit')",
+  --   setup = function()
+  --     require("core.utils").packer_lazy_load "vgit.nvim"
+  --   end,
+  -- }
 
 
-        use {
-          "saadparwaiz1/cmp_luasnip",
-          after = "nvim-cmp",
-        }
+  -- lsp stuff
 
-        use {
-          "hrsh7th/cmp-nvim-lua",
-          after = "nvim-cmp",
-        }
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    after = "mason-lspconfig.nvim",
+    config = "require('plugins.configs.nullls')",
+    requires = "plenary.nvim",
+  },
 
-        use {
-          "hrsh7th/cmp-buffer",
-          after = "nvim-cmp",
-        }
+  {
+    "ray-x/lsp_signature.nvim",
+    after = "nvim-lspconfig",
+    config = "require('plugins.configs.signature')",
+  },
 
-        use {
-          "ray-x/cmp-treesitter",
-          after = "nvim-cmp",
-        }
+  {
+    "andymass/vim-matchup",
+    opt = true,
+    setup = function()
+      require("core.utils").packer_lazy_load "vim-matchup"
+    end,
+  },
 
-        use {
-          "hrsh7th/cmp-path",
-          after = "nvim-cmp",
-        }
+  -- completion related
+  {
+    "L3MON4D3/LuaSnip",
+    event = "InsertEnter",
+  },
 
-        use {
-          "hrsh7th/cmp-cmdline",
-          after = "nvim-cmp",
-        }
+  {
+    "hrsh7th/nvim-cmp",
+    after = "LuaSnip",
+    config = "require('plugins.configs.nvim-cmp')",
+  },
 
-        use {
-          "numToStr/Comment.nvim",
-          opt = true,
-          config = "require('plugins.configs.comment')",
-          setup = function()
-            require("core.utils").packer_lazy_load "Comment.nvim"
-          end
-        }
 
-        -- file managing , picker etc
-        use {
-          "nvim-neo-tree/neo-tree.nvim",
-          branch = "v2.x",
-          config = "require('plugins.configs.neotree')",
-          requires = {
-            "nvim-lua/plenary.nvim",
-            "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
-            "MunifTanjim/nui.nvim",
-          },
-        }
+  {
+    "saadparwaiz1/cmp_luasnip",
+    after = "nvim-cmp",
+  },
 
-        use {
-          "nvim-telescope/telescope.nvim",
-          module = "telescope",
-          opt = true,
-          config = "require('plugins.configs.telescope')",
-          setup = function()
-            require("core.utils").packer_lazy_load "telescope.nvim"
-          end,
-        }
+  {
+    "hrsh7th/cmp-nvim-lua",
+    after = "nvim-cmp",
+  },
 
-        use {
-          'nvim-telescope/telescope-fzf-native.nvim',
-          after = "telescope.nvim",
-          run = 'make',
-          config = function()
-            require("telescope").load_extension "fzf"
-          end,
-        }
+  {
+    "hrsh7th/cmp-buffer",
+    after = "nvim-cmp",
+  },
 
-        use {
-          "stevearc/dressing.nvim",
-          after = "telescope.nvim",
-          config = "require('plugins.configs.dressing')",
-        }
+  {
+    "ray-x/cmp-treesitter",
+    after = "nvim-cmp",
+  },
 
-        use {
-          "rcarriga/nvim-notify",
-          after = "dressing.nvim",
-          config = "require('plugins.configs.nvim-notify')",
-        }
+  {
+    "hrsh7th/cmp-path",
+    after = "nvim-cmp",
+  },
 
-        -- use {
-          --   "DanilaMihailov/beacon.nvim",
-          --   opt = true,
-          --   setup = function()
-            --     require("core.utils").packer_lazy_load "beacon.nvim"
-            --   end
-            -- }
+  {
+    "hrsh7th/cmp-cmdline",
+    after = "nvim-cmp",
+  },
 
-            -- use {
-              --   "beauwilliams/focus.nvim",
-              --   opt = true,
-              --   config = "require('plugins.configs.focus')",
-              --   setup = function()
-                --     require("core.utils").packer_lazy_load "focus.nvim"
-                --   end,
-                -- }
-                --
-                use {
-                  'luukvbaal/stabilize.nvim',
-                  opt = true,
-                  config = "require('plugins.configs.stabilize')",
-                  setup = function()
-                    require("core.utils").packer_lazy_load "stabilize.nvim"
-                  end
-                }
+  {
+    "numToStr/Comment.nvim",
+    opt = true,
+    config = "require('plugins.configs.comment')",
+    setup = function()
+      require("core.utils").packer_lazy_load "Comment.nvim"
+    end
+  },
 
-                use {
-                  "akinsho/toggleterm.nvim",
-                  tag = 'v2.*',
-                  opt = true,
-                  config = "require('plugins.configs.toggleterm')",
-                  setup = function()
-                    require("core.utils").packer_lazy_load "toggleterm.nvim"
-                  end,
-                }
+  -- file managing , picker etc
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v2.x",
+    config = "require('plugins.configs.neotree')",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+    },
+  },
 
-                -- use {
-                  --   "tpope/vim-dadbod",
-                  --   opt = true,
-                  --   setup = function()
-                    --     require("core.utils").packer_lazy_load "vim-dadbod"
-                    --   end,
-                    -- }
-                    --
-                    -- use {
-                      --   "kristijanhusak/vim-dadbod-ui",
-                      --   after = "vim-dadbod",
-                      --   setup = "require('plugins.configs.dadbod')",
-                      -- }
-                      --
-                      -- use {
-                        --   "kristijanhusak/vim-dadbod-completion",
-                        --   after = { "vim-dadbod", "nvim-cmp" },
-                        -- }
+  {
+    "nvim-telescope/telescope.nvim",
+    module = "telescope",
+    opt = true,
+    config = "require('plugins.configs.telescope')",
+    setup = function()
+      require("core.utils").packer_lazy_load "telescope.nvim"
+    end,
+  },
 
-                        use {
-                          'saecki/crates.nvim',
-                          after = { "nvim-cmp" },
-                          event = { "BufRead Cargo.toml" },
-                          requires = { 'nvim-lua/plenary.nvim' },
-                          config = "require('plugins.configs.crates')",
-                        }
+  {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    after = "telescope.nvim",
+    run = 'make',
+    config = function()
+      require("telescope").load_extension "fzf"
+    end,
+  },
 
-                        use {
-                          "chentoast/marks.nvim",
-                          opt = true,
-                          config = "require('plugins.configs.marks')",
-                          setup = function()
-                            require("core.utils").packer_lazy_load "marks.nvim"
-                          end,
-                        }
+  {
+    "stevearc/dressing.nvim",
+    after = "telescope.nvim",
+    config = "require('plugins.configs.dressing')",
+  },
+
+  {
+    "rcarriga/nvim-notify",
+    after = "dressing.nvim",
+    config = "require('plugins.configs.nvim-notify')",
+  },
+
+  -- {
+  --   "DanilaMihailov/beacon.nvim",
+  --   opt = true,
+  --   setup = function()
+  --     require("core.utils").packer_lazy_load "beacon.nvim"
+  --   end
+  -- }
+
+  -- {
+  --   "beauwilliams/focus.nvim",
+  --   opt = true,
+  --   config = "require('plugins.configs.focus')",
+  --   setup = function()
+  --     require("core.utils").packer_lazy_load "focus.nvim"
+  --   end,
+  -- }
+  --
+  {
+    'luukvbaal/stabilize.nvim',
+    opt = true,
+    config = "require('plugins.configs.stabilize')",
+    setup = function()
+      require("core.utils").packer_lazy_load "stabilize.nvim"
+    end
+  },
+
+  {
+    "akinsho/toggleterm.nvim",
+    tag = 'v2.*',
+    opt = true,
+    config = "require('plugins.configs.toggleterm')",
+    setup = function()
+      require("core.utils").packer_lazy_load "toggleterm.nvim"
+    end,
+  },
+
+  -- {
+  --   "tpope/vim-dadbod",
+  --   opt = true,
+  --   setup = function()
+  --     require("core.utils").packer_lazy_load "vim-dadbod"
+  --   end,
+  -- }
+  --
+  -- {
+  --   "kristijanhusak/vim-dadbod-ui",
+  --   after = "vim-dadbod",
+  --   setup = "require('plugins.configs.dadbod')",
+  -- }
+  --
+  -- {
+  --   "kristijanhusak/vim-dadbod-completion",
+  --   after = { "vim-dadbod", "nvim-cmp" },
+  -- }
+
+  {
+    'saecki/crates.nvim',
+    after = { "nvim-cmp" },
+    event = { "BufRead Cargo.toml" },
+    requires = { 'nvim-lua/plenary.nvim' },
+    config = "require('plugins.configs.crates')",
+  },
+
+  {
+    "chentoast/marks.nvim",
+    opt = true,
+    config = "require('plugins.configs.marks')",
+    setup = function()
+      require("core.utils").packer_lazy_load "marks.nvim"
+    end,
+  },
 }
-

@@ -1,6 +1,5 @@
 return {
   "mg979/vim-visual-multi",
-  lazy = true,
   event = "BufRead",
   init = function()
     local g = vim.g

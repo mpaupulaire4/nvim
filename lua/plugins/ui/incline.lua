@@ -1,6 +1,5 @@
 return {
   "b0o/incline.nvim",
-  lazy = true,
   event = "WinEnter",
   opts = {
     debounce_threshold = {
