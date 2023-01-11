@@ -6,6 +6,7 @@ return {
     'RRethy/nvim-treesitter-textsubjects',
     "windwp/nvim-ts-autotag",
     'nvim-treesitter/nvim-treesitter-context', -- originally had it's own setup, may need it again
+    "andymass/vim-matchup",
   },
   opts = {
     ensure_installed = {

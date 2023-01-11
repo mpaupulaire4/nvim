@@ -2,20 +2,16 @@ return {
   {
     "williamboman/mason.nvim",
     lazy = false,
-    config = function()
-      require("mason").setup({
-        ui = {
-          icons = {
-            package_installed = "",
-            package_pending = "",
-            package_uninstalled = ""
-          },
-          border = "rounded"
-        }
-      })
-      require "mason-lspconfig"
-      require "mason-null-ls"
-    end,
+    opts = {
+      ui = {
+        icons = {
+          package_installed = "",
+          package_pending = "",
+          package_uninstalled = ""
+        },
+        border = "rounded"
+      }
+    },
   },
   {
     "neovim/nvim-lspconfig",
@@ -106,7 +102,7 @@ return {
   },
   {
     'jayp0521/mason-null-ls.nvim',
-    lazy = true,
+    event = 'VeryLazy',
     opts = {
       ensure_installed = {},
       automatic_installation = true,
