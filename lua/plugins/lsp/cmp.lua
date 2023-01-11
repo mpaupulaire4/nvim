@@ -14,6 +14,7 @@ return {
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
     "ray-x/cmp-treesitter",
+    "kyazdani42/nvim-web-devicons",
   },
   config = function()
     local cmp = require 'cmp'

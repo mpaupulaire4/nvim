@@ -6,7 +6,8 @@ return {
     { "<leader>gh", ":'<,'>DiffviewFileHistory<CR>" },
   },
   dependencies = {
-    'nvim-lua/plenary.nvim'
+    'nvim-lua/plenary.nvim',
+    "kyazdani42/nvim-web-devicons",
   },
   config = function()
     local actions = require("diffview.actions")

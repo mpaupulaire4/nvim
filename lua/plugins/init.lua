@@ -1,15 +1,16 @@
--- TODO setup and test leap.nvim
+-- TODO add todo-comments.nvim
+-- TODO add https://github.com/nvim-treesitter/nvim-treesitter-refactor
+-- TODO add https://github.com/JoosepAlviste/nvim-ts-context-commentstring
+-- TODO setup and test https://github.com/ggandor/leap.nvim
 -- TODO setup and test syntax-tree-surfer
 -- TODO setup and test nvim-navic in tabline
 -- TODO setup and write plugins around instant.nvim for code pairing
 
-
--- NOTE this file is for core plugins
 return {
 
   "nathom/filetype.nvim",
   -- TODO: add as dependencies where it is one and remove from here.
-  "nvim-lua/plenary.nvim",
+  -- "nvim-lua/plenary.nvim",
 
 
   -- TODO: add as dependencies where it is one and remove from here.
@@ -33,32 +34,7 @@ return {
   --   config = "require('plugins.configs.mini')",
   -- }
 
-  -- Git
-  -- TODO look into refactoring this to use nui and make it prettier/ better to use maybe even add lazygit features
-  -- {
-  --   'tanvirtin/vgit.nvim',
-  --   requires = {
-  --     'nvim-lua/plenary.nvim'
-  --   },
-  --   config = "require('plugins.configs.vgit')",
-  --   setup = function()
-  --     require("core.utils").packer_lazy_load "vgit.nvim"
-  --   end,
-  -- }
-
-
   -- file managing , picker etc
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v2.x",
-    config = "require('plugins.configs.neotree')",
-    requires = {
-      "nvim-lua/plenary.nvim",
-      "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
-      "MunifTanjim/nui.nvim",
-    },
-  },
-
   {
     "nvim-telescope/telescope.nvim",
     module = "telescope",
