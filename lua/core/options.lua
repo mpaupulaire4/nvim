@@ -48,7 +48,7 @@ opt.whichwrap:append "<>[]hl"
 opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 
 g.mapleader = " "
-g.did_load_filetypes = 1
+
 -- disable some builtin vim plugins
 local disabled_built_ins = {
    "2html_plugin",

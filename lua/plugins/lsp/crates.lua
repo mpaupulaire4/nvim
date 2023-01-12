@@ -1,7 +1,7 @@
 return {
   'saecki/crates.nvim',
   version = "v0.3.0",
-  requires = { 'nvim-lua/plenary.nvim' },
+  dependencies = { 'nvim-lua/plenary.nvim' },
   event = { "BufRead Cargo.toml" },
   config = function()
     -- NOTE Also supports coq

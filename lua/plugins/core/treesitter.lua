@@ -23,6 +23,7 @@ return {
       "html",
       "toml",
       "vim",
+      "help",
     },
     autotag = {
       enable = true,

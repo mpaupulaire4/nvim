@@ -40,3 +40,23 @@ require('mini.indentscope').setup {
   -- Which character to use for drawing scope indicator
   symbol = '╎',
 }
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("UserIndentScopeFileTypeDisable", { clear = true }),
+  pattern = {
+    'help',
+    'terminal',
+    'neo-tree',
+    'dashboard',
+    'alpha',
+    'packer',
+    'lspinfo',
+    'TelescopePrompt',
+    'TelescopeResults',
+  },
+  callback = function()
+  --   vim.cmd [[
+  --     au FileType * if index([ 'help', 'terminal', 'neo-tree', 'dashboard', 'alpha', 'packer', 'lspinfo', 'TelescopePrompt', 'TelescopeResults'], &ft) >= 0 | let b:miniindentscope_disable=v:true | endif
+  -- ]]
+  end,
+})

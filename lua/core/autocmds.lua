@@ -13,7 +13,3 @@ vim.cmd [[ au TermOpen term://* setlocal nonumber norelativenumber | setfiletype
 -- File extension specific tabbing
 -- vim.cmd [[ autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4 ]]
 --
-
-vim.cmd [[
-au FileType * if index([ 'help', 'terminal', 'neo-tree', 'dashboard', 'alpha', 'packer', 'lspinfo', 'TelescopePrompt', 'TelescopeResults'], &ft) >= 0 | let b:miniindentscope_disable=v:true | endif
-]]

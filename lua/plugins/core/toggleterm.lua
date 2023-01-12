@@ -1,4 +1,4 @@
-local lazygit
+local lazygit = nil
 local function toggle_lazygit()
   lazygit:toggle()
 end
