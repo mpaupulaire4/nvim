@@ -57,16 +57,6 @@ return {
   --   end,
   -- }
 
-  {
-    "akinsho/toggleterm.nvim",
-    tag = 'v2.*',
-    opt = true,
-    config = "require('plugins.configs.toggleterm')",
-    setup = function()
-      require("core.utils").packer_lazy_load "toggleterm.nvim"
-    end,
-  },
-
   -- {
   --   "tpope/vim-dadbod",
   --   opt = true,
@@ -86,20 +76,8 @@ return {
   --   after = { "vim-dadbod", "nvim-cmp" },
   -- }
 
-  {
-    'saecki/crates.nvim',
-    after = { "nvim-cmp" },
-    event = { "BufRead Cargo.toml" },
-    requires = { 'nvim-lua/plenary.nvim' },
-    config = "require('plugins.configs.crates')",
-  },
-
-  {
-    "chentoast/marks.nvim",
-    opt = true,
-    config = "require('plugins.configs.marks')",
-    setup = function()
-      require("core.utils").packer_lazy_load "marks.nvim"
-    end,
-  },
+  { import = "plugins.core" },
+  { import = "plugins.lsp" },
+  { import = "plugins.git" },
+  { import = "plugins.ui" },
 }
