@@ -17,7 +17,6 @@ return {
           telescope = require('telescope.themes').get_cursor({}),
         }
       end,
-
     },
   }
 }

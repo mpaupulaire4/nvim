@@ -15,7 +15,7 @@ return {
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
-		event = 'VeryLazy',
+		event = "BufRead",
 		dependencies = {
 			"simrat39/rust-tools.nvim",
 			"hrsh7th/cmp-nvim-lsp",
@@ -102,7 +102,7 @@ return {
 	},
 	{
 		'jayp0521/mason-null-ls.nvim',
-		event = 'VeryLazy',
+		event = "BufRead",
 		opts = {
 			ensure_installed = {},
 			automatic_installation = true,

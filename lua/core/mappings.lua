@@ -1,7 +1,6 @@
 local utils = require "core.utils"
 
 local map = utils.map
-local cmd = vim.cmd
 
 -- Better jumts and tag follows
 map("n", "<C-f>", '<C-]>')
@@ -14,16 +13,9 @@ map({ "", "n", "v", "c" }, "<C-e>", '<Esc>')
 -- Don't copy the replaced text after pasting in visual mode
 map("v", "p", '"_dP')
 
--- Replace text and go to insert mode
--- map("v", "i", '"_di')
-
 -- insert mode and completion related
-map("i", "<C-e>", 'pumvisible() ? "<C-e>" : "<C-c>"', { expr = true })
-map("i", "<Esc>", 'pumvisible() ? "<C-e>" : "<C-c>"', { expr = true })
-map("i", "<BS>", 'pumvisible() ? "<C-e><BS>"  : "<BS>"', { expr = true })
-map("i", "<CR>", 'pumvisible() ? (complete_info().selected == -1 ? "<C-e><CR>" : "<C-y>") : "<CR>"', { expr = true })
-map("i", "<Tab>", 'pumvisible() ? "<C-n>" : "<Tab>"', { expr = true })
-map("i", "<S-Tab>", 'pumvisible() ? "<C-p>" : "<S-Tab>"', { expr = true })
+map({ "i", "n", "c", "v"}, "<C-e>", 'pumvisible() ? "<C-e>" : "<C-c>"', { expr = true })
+
 
 -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
 -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
@@ -35,8 +27,8 @@ map("", "<Down>", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true 
 map("", "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
 
 -- use ESC to turn off search highlighting
-map("n", "<C-e>", ":noh <CR>")
-map("n", "<Esc>", ":noh <CR>")
+map("n", "<C-e>", "<cmd>noh<CR>")
+map("n", "<Esc>", "<cmd>noh<CR>")
 
 -- yank from current cursor to end of line
 -- map("n", "Y", "yg$")
@@ -59,10 +51,10 @@ map("n", "<C-a>", "ggVG") -- select whole file content
 map("n", "<Tab>", "<cmd>bnext<CR>") -- next buffer
 map("n", "<S-Tab>", "<cmd>bprevious<CR>") -- prev buffer
 
-map({ "n", "i" }, "<C-q>", "<cmd>q <CR>") -- ctrl + q to quit
+map({ "n", "i" }, "<C-q>", "<cmd>q<CR>") -- ctrl + q to quit
 
-map("n", "<C-s>", ":w <CR>") -- ctrl + s to save file
-map("i", "<C-s>", "<Esc>:w <CR>") -- ctrl + s to save file
+map("n", "<C-s>", "<cmd>w<CR>") -- ctrl + s to save file
+map("i", "<C-s>", "<Esc><cmd>w<CR>") -- ctrl + s to save file
 
 -- better tabbing
 map("v", "<", "<gv")
@@ -85,11 +77,3 @@ map("v", "<S-A-Up>", "\"9Y\"9P`[v`]")
 map("n", "<S-A-Down>", "\"9Y\"9p")
 map("i", "<S-A-Down>", "<Esc>\"9Y\"9pi")
 map("v", "<S-A-Down>", "\"9Y\"9Pgv")
-
--- Add Packer commands because we are not loading it at startup
-cmd "silent! command PackerClean lua require 'plugins' require('packer').clean()"
-cmd "silent! command PackerCompile lua require 'plugins' require('packer').compile()"
-cmd "silent! command PackerInstall lua require 'plugins' require('packer').install()"
-cmd "silent! command PackerStatus lua require 'plugins' require('packer').status()"
-cmd "silent! command PackerSync lua require 'plugins' require('packer').sync()"
-cmd "silent! command PackerUpdate lua require 'plugins' require('packer').update()"

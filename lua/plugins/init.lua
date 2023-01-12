@@ -9,9 +9,6 @@
 return {
 
   "nathom/filetype.nvim",
-  -- TODO: add as dependencies where it is one and remove from here.
-  -- "nvim-lua/plenary.nvim",
-
 
   -- TODO: add as dependencies where it is one and remove from here.
   {
@@ -19,11 +16,13 @@ return {
     lazy = true,
     config = true,
   },
-  -- using packer.nvim
+
   {
     'nmac427/guess-indent.nvim',
     event = "BufRead",
-    config = true,
+    opts = {
+      auto_cmd = true,
+    },
   },
 
   {
