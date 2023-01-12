@@ -1,5 +1,5 @@
 local lspkind_icons = require 'core.lspkind_icons'
-
+-- TODO reaudit https://github.com/ms-jpq/coq_nvim and seee if it works as good or better
 return {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",

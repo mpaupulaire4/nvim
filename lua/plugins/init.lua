@@ -26,6 +26,12 @@ return {
     config = true,
   },
 
+  {
+    'luukvbaal/stabilize.nvim',
+    event = { "WinEnter", "WinLeave" },
+    config = true,
+  },
+
   -- TODO break up and import only used plugins
   -- TODO need to revisit for  lazy.nvim
   -- {
@@ -33,38 +39,6 @@ return {
   --   branch = 'stable',
   --   config = "require('plugins.configs.mini')",
   -- }
-
-  -- file managing , picker etc
-  {
-    "nvim-telescope/telescope.nvim",
-    module = "telescope",
-    opt = true,
-    config = "require('plugins.configs.telescope')",
-    setup = function()
-      require("core.utils").packer_lazy_load "telescope.nvim"
-    end,
-  },
-
-  {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    after = "telescope.nvim",
-    run = 'make',
-    config = function()
-      require("telescope").load_extension "fzf"
-    end,
-  },
-
-  {
-    "stevearc/dressing.nvim",
-    after = "telescope.nvim",
-    config = "require('plugins.configs.dressing')",
-  },
-
-  {
-    "rcarriga/nvim-notify",
-    after = "dressing.nvim",
-    config = "require('plugins.configs.nvim-notify')",
-  },
 
   -- {
   --   "DanilaMihailov/beacon.nvim",
@@ -82,15 +56,6 @@ return {
   --     require("core.utils").packer_lazy_load "focus.nvim"
   --   end,
   -- }
-  --
-  {
-    'luukvbaal/stabilize.nvim',
-    opt = true,
-    config = "require('plugins.configs.stabilize')",
-    setup = function()
-      require("core.utils").packer_lazy_load "stabilize.nvim"
-    end
-  },
 
   {
     "akinsho/toggleterm.nvim",
