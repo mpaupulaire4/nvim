@@ -25,20 +25,6 @@ return {
     },
   },
 
-  {
-    'luukvbaal/stabilize.nvim',
-    event = { "WinEnter", "WinLeave" },
-    config = true,
-  },
-
-  -- TODO break up and import only used plugins
-  -- TODO need to revisit for  lazy.nvim
-  -- {
-  --   'echasnovski/mini.nvim',
-  --   branch = 'stable',
-  --   config = "require('plugins.configs.mini')",
-  -- }
-
   -- {
   --   "DanilaMihailov/beacon.nvim",
   --   opt = true,

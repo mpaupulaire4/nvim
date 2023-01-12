@@ -1,7 +1,7 @@
 -- TODO finish set up and style
 return {
   "b0o/incline.nvim",
-  event = "WinEnter",
+  event = "WinNew",
   opts = {
     debounce_threshold = {
       falling = 50,

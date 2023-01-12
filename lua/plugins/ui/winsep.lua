@@ -1,7 +1,7 @@
 -- TODO do more research. Manually set these values.
 return {
   "nvim-zh/colorful-winsep.nvim",
-  event = "WinEnter",
+  event = "WinNew",
   opts = {
     -- highlight for Window separator
     highlight = {
