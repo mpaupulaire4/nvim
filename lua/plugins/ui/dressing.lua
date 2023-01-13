@@ -9,7 +9,7 @@ return {
     select = {
       enabled = true,
       get_config = function(opts)
-        -- TODO use opts to decide between cursor based or popup based
+        -- TODO: use opts to decide between cursor based or popup based
         return {
           -- Priority list of preferred vim.select implementations
           backend = "telescope",

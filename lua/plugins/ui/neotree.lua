@@ -1,11 +1,12 @@
--- TODO look into using it in place of diffview. Create open command that shows diff of files.
--- TODO go through and remove default opts
+-- TODO: look into using it in place of diffview. Create open command that shows diff of files.
+-- TODO: go through and remove default opts
 return {
   "nvim-neo-tree/neo-tree.nvim",
   branch = "v2.x",
   keys = {
     { "<C-n>", "<cmd>Neotree filesystem float toggle reveal<CR>" },
-    -- TODO look into using it for git status
+    -- TODO: look into using it for git status
+
     -- { plugin_maps.nvimtree.focus, "<cmd>NvimTreeFocus <CR>" },
   },
   dependencies = {

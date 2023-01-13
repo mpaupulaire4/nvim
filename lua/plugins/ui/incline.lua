@@ -1,4 +1,4 @@
--- TODO finish set up and style
+-- TODO: finish set up and style
 return {
   "b0o/incline.nvim",
   event = "WinNew",

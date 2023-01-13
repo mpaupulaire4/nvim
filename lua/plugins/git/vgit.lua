@@ -1,4 +1,4 @@
--- TODO look into refactoring this to use nui and make it prettier/ better to use maybe even add lazygit features
+-- TODO: look into refactoring this to use nui and make it prettier/ better to use maybe even add lazygit features
 return {
   'tanvirtin/vgit.nvim',
   enabled = false,

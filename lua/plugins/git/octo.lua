@@ -6,7 +6,7 @@ return {
     'nvim-telescope/telescope.nvim',
     'kyazdani42/nvim-web-devicons',
   },
-  -- TODO Look over configurations and learn / set mappings
+  -- TODO: Look over configurations and learn / set mappings
   opts = {
 
   },

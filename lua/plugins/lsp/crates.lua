@@ -4,12 +4,12 @@ return {
   dependencies = { 'nvim-lua/plenary.nvim' },
   event = { "BufRead Cargo.toml" },
   config = function()
-    -- NOTE Also supports coq
+    -- NOTE: Also supports coq
     require('crates').setup {
       null_ls = {
         enabled = true,
       }
-      -- TODO uncomment if switching to coq
+      -- TODO: uncomment if switching to coq
       -- src = {
       --   coq = {
       --     enabled = true,

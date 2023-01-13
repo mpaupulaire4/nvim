@@ -1,5 +1,5 @@
--- TODO setup mappings to help with conflict resolution
--- TODO Verify that this is needed if diffview is used
+-- TODO: setup mappings to help with conflict resolution
+-- TODO: Verify that this is needed if diffview is used
 return {
   'akinsho/git-conflict.nvim',
   lazy = true,

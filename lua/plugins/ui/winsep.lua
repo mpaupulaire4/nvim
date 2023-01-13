@@ -1,4 +1,4 @@
--- TODO do more research. Manually set these values.
+-- TODO: do more research. Manually set these colors if this isn't needed.
 return {
   "nvim-zh/colorful-winsep.nvim",
   event = "WinNew",
@@ -6,7 +6,7 @@ return {
     -- highlight for Window separator
     highlight = {
       -- bg = "#16161E",
-      fg = "#4fa6ed",
+      fg = "#48b0bd",
     },
     -- timer refresh rate
     interval = 30,

@@ -1,8 +1,9 @@
 local lspkind_icons = require 'core.lspkind_icons'
--- TODO reaudit https://github.com/ms-jpq/coq_nvim and seee if it works as good or better
+-- TODO: reaudit https://github.com/ms-jpq/coq_nvim and seee if it works as good or better
 return {
   "hrsh7th/nvim-cmp",
-  event = "InsertChange",
+  -- NOTE: this is loaded by cmp-nvim-lsp when it is loaded by lsp configs
+  lazy = true,
   init = function()
     vim.opt.completeopt = "menuone,noselect"
   end,

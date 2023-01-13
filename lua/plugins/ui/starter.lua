@@ -12,6 +12,7 @@ local logo = [[
              ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃
 ]]
 return {
+  -- TODO: look into alpha. See if it is faster  and fixes `InsertEnter` event issues.
   'echasnovski/mini.starter',
   branch = 'stable',
   config = function()

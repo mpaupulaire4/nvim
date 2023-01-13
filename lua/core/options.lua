@@ -1,6 +1,6 @@
 local opt = vim.opt
 
--- TODO When this is supported remove stabilize.nvim
+-- TODO: When this is supported remove stabilize.nvim
 -- opt.splitkeep = "screen"
 
 opt.showmode = false
