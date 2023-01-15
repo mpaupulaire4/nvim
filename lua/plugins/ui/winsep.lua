@@ -3,13 +3,12 @@ return {
   "nvim-zh/colorful-winsep.nvim",
   event = "WinNew",
   config = function(_, opts)
-    vim.api.nvim_set_hl(0, 'WinSeparator', { fg = 'fg', bg = 'bg' })
+    vim.api.nvim_set_hl(0, 'WinSeparator', { fg = 'grey', bg = 'bg' })
     require('colorful-winsep').setup(opts)
   end,
   opts = {
     -- highlight for Window separator
     highlight = {
-      -- bg = "#16161E",
       fg = "#48b0bd",
     },
     -- timer refresh rate

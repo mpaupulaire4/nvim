@@ -1,4 +1,3 @@
--- TODO: finish set up and style -
 local function get_diagnostic_label(props)
   local icons = require('core.icons').diagnostic
   local label = {}
@@ -34,7 +33,7 @@ return {
         },
         InclineNormalNC = {
           default = true,
-          group = "Normal"
+          group = "WinSeparator",
         }
       }
     },
