@@ -20,12 +20,12 @@ require("lazy").setup("plugins", {
   },
   checker = {
     -- automatically check for plugin updates
-    enabled = true,
+    enabled = false,
   },
   change_detection = {
     -- automatically check for config file changes and reload the ui
     enabled = true,
-    notify = true, -- get a notification when changes are found
+    notify = false, -- get a notification when changes are found
   },
   performance = {
     reset_packpath = true, -- reset the package path to improve startup time

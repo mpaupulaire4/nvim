@@ -1,7 +1,7 @@
 return {
   {
     "williamboman/mason.nvim",
-    lazy = false,
+    lazy = true,
     opts = {
       ui = {
         icons = {
@@ -39,6 +39,7 @@ return {
       { "<leader>p", vim.lsp.buf.format },
     },
     config = function()
+      local icons = require "core.icons"
       require("mason-lspconfig").setup {
         ensure_installed = {
           "cssls",
@@ -49,15 +50,10 @@ return {
         automatic_installation = false,
       }
 
-      local function lspSymbol(name, icon)
+      for name, icon in ipairs(icons.diagnostic) do
         local hl = "DiagnosticSign" .. name
         vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
       end
-
-      lspSymbol("Error", "")
-      lspSymbol("Info", "")
-      lspSymbol("Hint", "")
-      lspSymbol("Warn", "")
 
       vim.diagnostic.config {
         virtual_text = {

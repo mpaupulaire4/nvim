@@ -7,6 +7,7 @@ return {
     "windwp/nvim-ts-autotag",
     'nvim-treesitter/nvim-treesitter-context', -- originally had it's own setup, may need it again
     "andymass/vim-matchup",
+    'JoosepAlviste/nvim-ts-context-commentstring',
   },
   config = function()
     require('nvim-treesitter.configs').setup {
@@ -59,7 +60,11 @@ return {
       },
       context = {
         enable = true,
-      }
+      },
+      context_commentstring = {
+        enable = true,
+        enable_autocmd = false,
+      },
     }
   end,
 }

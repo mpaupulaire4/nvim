@@ -1,11 +1,12 @@
+-- TODO: configure mappings
 return {
   "chentoast/marks.nvim",
   event = 'BufRead',
   opts = {
     -- whether to map keybinds or not. default true
-    default_mappings = true,
+    default_mappings = false,
     -- which builtin marks to show. default {}
-    builtin_marks = { ".", "<", ">", "^" },
+    builtin_marks = {},
     -- whether movements cycle back to the beginning/end of buffer. default true
     cyclic = true,
     -- whether the shada file is updated after modifying uppercase marks. default false
@@ -39,7 +40,50 @@ return {
     --   -- defaults to false.
     --   annotate = false,
     -- },
-    mappings = {}
+    mappings = {
+      -- Set next available lowercase mark at cursor.
+      set_next = "m,",
+      -- Toggle next available mark at cursor.
+      toggle = false,
+      -- Deletes all marks on current line.
+      delete_line = "dm-",
+      -- Deletes all marks in current buffer.
+      delete_buf = "dM",
+      -- Goes to next mark in buffer.
+      next = "",
+      -- Goes to previous mark in buffer.
+      prev = "",
+      -- Previews mark (will wait for user input). press <cr> to just preview the next mark.
+      preview = "m<space>",
+      -- Sets a letter mark (will wait for input).
+      set = "m",
+      -- Delete a letter mark (will wait for input).
+      delete = "dm",
+
+      -- Sets a bookmark from group[0-9].
+      set_bookmark0 = "<leader>m",
+      -- Deletes all bookmarks from group[0-9].
+      delete_bookmark0 = "<leader>dM",
+      -- Deletes the bookmark under the cursor.
+      delete_bookmark = "<leader>dm",
+      -- Moves to the next bookmark having the same type as the
+      -- bookmark under the cursor.
+      next_bookmark = "<leader>'",
+      -- Moves to the previous bookmark having the same type as the
+      -- bookmark under the cursor.
+      prev_bookmark = "<leader>-",
+      -- Moves to the next bookmark of of the same group type. Works by
+      -- first going according to line number, and then according to buffer
+      -- number.
+      next_bookmark0 = '"',
+      -- Moves to the previous bookmark of of the same group type. Works by
+      -- first going according to line number, and then according to buffer
+      -- number.
+      prev_bookmark0 = "_",
+      -- Prompts the user for a virtual line annotation that is then placed
+      -- above the bookmark. Requires neovim 0.6+ and is not mapped by default.
+      annotate = "",
+    }
   }
 
 }

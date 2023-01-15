@@ -1,4 +1,3 @@
-local lspkind_icons = require 'core.lspkind_icons'
 -- TODO: reaudit https://github.com/ms-jpq/coq_nvim and seee if it works as good or better
 return {
   "hrsh7th/nvim-cmp",
@@ -20,6 +19,7 @@ return {
   config = function()
     local cmp = require 'cmp'
     local luasnip = require('luasnip')
+    local icons = require('core.icons').kind
 
     cmp.setup {
       snippet = {
@@ -40,7 +40,7 @@ return {
 
           -- Kind icons
           -- This concatonates the icons with the name of the item kind
-          vim_item.kind = string.format('%s %s', lspkind_icons[vim_item.kind], vim_item.kind)
+          vim_item.kind = string.format('%s %s', icons[vim_item.kind], vim_item.kind)
           -- Source
           vim_item.menu = ({
             buffer = "[Buffer]",

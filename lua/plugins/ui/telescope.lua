@@ -7,12 +7,13 @@ return {
   },
   cmd = "Telescope",
   keys = {
-    { "<leader>fb", "<cmd>Telescope buffers <CR>" },
-    { "<leader>ff", "<cmd>Telescope find_files <CR>" },
-    { "<leader>fa", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true <CR>" },
-    { "<leader>fh", "<cmd>Telescope help_tags <CR>" },
-    { "<leader>fw", "<cmd>Telescope live_grep <CR>" },
-    { "<leader>fo", "<cmd>Telescope oldfiles <CR>" },
+    { "<leader>fb", "<cmd>Telescope buffers<CR>" },
+    { "<leader>ff", "<cmd>Telescope find_files<CR>" },
+    { "<leader>fa", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>" },
+    { "<leader>fh", "<cmd>Telescope help_tags<CR>" },
+    { "<leader>fw", "<cmd>Telescope live_grep<CR>" },
+    { "<leader>fo", "<cmd>Telescope oldfiles<CR>" },
+    { "<leader>fm", "<cmd>Telescope marks<CR>" },
 
     -- LSP related
     { "gd", "<cmd>Telescope lsp_definitions<cr>" },
