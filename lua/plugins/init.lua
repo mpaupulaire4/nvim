@@ -1,6 +1,3 @@
--- TODO: setup and test https://github.com/ggandor/leap.nvim
--- TODO: setup and test syntax-tree-surfer
--- TODO: setup and test nvim-navic in tabline
 -- TODO: setup and write plugins around instant.nvim for code pairing
 
 return {

@@ -1,5 +1,5 @@
--- TODO: look into using it in place of diffview. Create open command that shows diff of files.
 -- TODO: go through and remove default opts
+-- TODO: look into using it in place of diffview. Create open command that shows diff of files.
 return {
   "nvim-neo-tree/neo-tree.nvim",
   branch = "v2.x",
