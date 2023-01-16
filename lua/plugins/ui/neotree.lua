@@ -1,26 +1,26 @@
 -- TODO: go through and remove default opts
--- TODO: look into using it in place of diffview. Create open command that shows diff of files.
+-- TODO: look into using it in place of diffview / as git status.
+--        Create open command that shows diff of files or mabe preview like telescope.
 return {
   "nvim-neo-tree/neo-tree.nvim",
   branch = "v2.x",
   keys = {
     { "<C-n>", "<cmd>Neotree filesystem float toggle reveal<CR>" },
-    -- TODO: look into using it for git status
-
-    -- { plugin_maps.nvimtree.focus, "<cmd>NvimTreeFocus <CR>" },
   },
   dependencies = {
     "nvim-lua/plenary.nvim",
-    "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+    "kyazdani42/nvim-web-devicons",
     "MunifTanjim/nui.nvim",
   },
+  init = function()
+    vim.g.neo_tree_remove_legacy_commands = true
+  end,
   opts = {
     close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
     -- popup_border_style is for input and confirmation dialogs.
     -- Configurtaion of floating window is done in the individual source sections.
     -- "NC" is a special style that works well with NormalNC set
     close_floats_on_escape_key = true,
-    default_source = "filesystem",
     enable_diagnostics = true,
     enable_git_status = true,
     enable_modified_markers = true, -- Show markers for files with unsaved changes.

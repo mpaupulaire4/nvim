@@ -1,3 +1,4 @@
+-- TODO: look into https://github.com/ggandor/leap-ast.nvim
 return {
   'ggandor/leap.nvim',
   keys = {

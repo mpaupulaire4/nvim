@@ -1,3 +1,10 @@
+-- TODO: look into a note taking plugin
+--        - https://github.com/nvim-neorg/neorg
+--        - https://github.com/phaazon/mind.nvim
+--        - https://github.com/jakewvincent/mkdnflow.nvim
+-- TODO: window resize plugins: Maybe adapt to what you need.
+--        - https://github.com/anuvyklack/windows.nvim
+--        - https://github.com/beauwilliams/focus.nvim
 -- TODO: setup and write plugins around instant.nvim for code pairing
 
 return {
