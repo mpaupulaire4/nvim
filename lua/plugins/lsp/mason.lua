@@ -28,7 +28,7 @@ return {
       -- {m.add_workspace_folder,  vim.lsp.buf.add_workspace_folder},
       -- {m.remove_workspace_folder,  vim.lsp.buf.remove_workspace_folder},
       -- {m.list_workspace_folders,  print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>"},
-      -- {m.type_definition,  vim.lsp.buf.type_definition},
+      { "<leader>gt", vim.lsp.buf.type_definition },
       { "<leader>r", vim.lsp.buf.rename },
       { "<leader>a", vim.lsp.buf.code_action },
       -- {m.references,  vim.lsp.buf.references},
