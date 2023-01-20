@@ -58,43 +58,43 @@ return {
       lualine_y = {},
       lualine_z = { 'location' },
     },
-    tabline = {
-      lualine_a = {
-        {
-          'buffers',
-          -- show_filename_only = false,
-          filetype_names = {
-            TelescopePrompt = 'Telescope',
-            dashboard = 'Dashboard',
-            packer = 'Packer',
-            fzf = 'FZF',
-            alpha = 'Alpha',
-            dbui = 'Dadbod'
-          }, -- Shows specific buffer name for that filetype ( { `filetype` = `buffer_name`, ... } )
-        },
-        -- {
-        --   'filename',
-        --   separator = {
-        --     -- left = '',
-        --     right = ''
-        --   },
-        --   right_padding = 2,
-        --   path = 1,
-        --   symbols = {
-        --     modified = " "
-        --   }
-        -- },
-        -- { 'mode', separator = { left = '' }, right_padding = 2 },
-      },
-      lualine_c = {
-      },
-      lualine_x = {},
-      lualine_y = {},
-      lualine_z = {
-        "tabs"
-        -- { 'location', separator = { right = '' }, left_padding = 2 },
-      },
-    },
+    -- tabline = {
+    --   lualine_a = {
+    --     {
+    --       'buffers',
+    --       -- show_filename_only = false,
+    --       filetype_names = {
+    --         TelescopePrompt = 'Telescope',
+    --         dashboard = 'Dashboard',
+    --         packer = 'Packer',
+    --         fzf = 'FZF',
+    --         alpha = 'Alpha',
+    --         dbui = 'Dadbod'
+    --       }, -- Shows specific buffer name for that filetype ( { `filetype` = `buffer_name`, ... } )
+    --     },
+    --     -- {
+    --     --   'filename',
+    --     --   separator = {
+    --     --     -- left = '',
+    --     --     right = ''
+    --     --   },
+    --     --   right_padding = 2,
+    --     --   path = 1,
+    --     --   symbols = {
+    --     --     modified = " "
+    --     --   }
+    --     -- },
+    --     -- { 'mode', separator = { left = '' }, right_padding = 2 },
+    --   },
+    --   lualine_c = {
+    --   },
+    --   lualine_x = {},
+    --   lualine_y = {},
+    --   lualine_z = {
+    --     "tabs"
+    --     -- { 'location', separator = { right = '' }, left_padding = 2 },
+    --   },
+    -- },
     extensions = {
       "neo-tree",
       "toggleterm"

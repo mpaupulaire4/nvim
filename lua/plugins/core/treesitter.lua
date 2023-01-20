@@ -5,7 +5,8 @@ return {
     'nvim-treesitter/nvim-treesitter-textobjects',
     'RRethy/nvim-treesitter-textsubjects',
     "windwp/nvim-ts-autotag",
-    'nvim-treesitter/nvim-treesitter-context', -- originally had it's own setup, may need it again
+    -- TODO: see if adding its own setup fixes context
+    'nvim-treesitter/nvim-treesitter-context',
     "andymass/vim-matchup",
     'JoosepAlviste/nvim-ts-context-commentstring',
   },

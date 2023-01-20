@@ -1,11 +1,12 @@
-local utils = require "core.utils"
+local map = vim.keymap.set
 
-local map = utils.map
+-- keep normal <c-i> behaviour when tab is mapped
+map("n", "<C-I>", "<C-I>")
 
 -- Better jumts and tag follows
 map("n", "<C-f>", '<C-]>')
--- map("", "<C-[>", '<C-o>')
--- map("", "<C-]>", '<C-i>')
+-- map("n", "<C-->", '<C-o>')
+-- map("n", "<C-'>", '<C-i>')
 
 -- Alternate Esc
 map({ "", "n", "v", "c" }, "<C-e>", '<Esc>')
@@ -14,7 +15,7 @@ map({ "", "n", "v", "c" }, "<C-e>", '<Esc>')
 map("v", "p", '"_dP')
 
 -- insert mode and completion related
-map({ "i", "n", "c", "v"}, "<C-e>", 'pumvisible() ? "<C-e>" : "<C-c>"', { expr = true })
+map({ "i", "n", "c", "v" }, "<C-e>", 'pumvisible() ? "<C-e>" : "<C-c>"', { expr = true })
 
 
 -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
@@ -48,10 +49,10 @@ map("n", "<C-a>", "ggVG") -- select whole file content
 -- map("n", "<S-t>", ":enew <CR>") -- new buffer
 -- map("n", "<C-t>", ":tabnew <CR>") -- new tabs
 
-map("n", "<Tab>", "<cmd>bnext<CR>") -- next buffer
-map("n", "<S-Tab>", "<cmd>bprevious<CR>") -- prev buffer
+-- map("n", "<Tab>", "<cmd>bnext<CR>") -- next buffer
+-- map("n", "<S-Tab>", "<cmd>bprevious<CR>") -- prev buffer
 
-map({ "n", "i" }, "<C-q>", "<cmd>q<CR>") -- ctrl + q to quit
+map("", "<C-q>", "<cmd>q<CR>") -- ctrl + q to quit
 
 map("n", "<C-s>", "<cmd>w<CR>") -- ctrl + s to save file
 map("i", "<C-s>", "<Esc><cmd>w<CR>") -- ctrl + s to save file
