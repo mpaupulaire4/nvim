@@ -15,6 +15,7 @@ end
 return {
   "b0o/incline.nvim",
   event = "WinNew",
+  enabled = false,
   opts = {
     debounce_threshold = {
       falling = 50,

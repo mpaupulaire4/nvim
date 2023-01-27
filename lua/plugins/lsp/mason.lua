@@ -20,6 +20,7 @@ return {
       "simrat39/rust-tools.nvim",
       "hrsh7th/cmp-nvim-lsp",
       "neovim/nvim-lspconfig",
+      "SmiteshP/nvim-navic",
     },
     keys = {
       { "H", vim.lsp.buf.hover },
@@ -66,22 +67,32 @@ return {
 
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
       local lspconfig = require "lspconfig"
+      local navic = require("nvim-navic")
+
+      local on_attach = function(client, bufnr)
+        if client.server_capabilities.documentSymbolProvider then
+          navic.attach(client, bufnr)
+        end
+      end
 
       require("mason-lspconfig").setup_handlers {
         function(server_name) -- default handler (optional)
           lspconfig[server_name].setup {
-            capabilities = capabilities
+            capabilities = capabilities,
+            on_attach = on_attach,
           }
         end,
         ["denols"] = function()
           lspconfig["denols"].setup {
             capabilities = capabilities,
+            on_attach = on_attach,
             root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc")
           }
         end,
         ["tsserver"] = function()
           lspconfig["tsserver"].setup {
             capabilities = capabilities,
+            on_attach = on_attach,
             root_dir = lspconfig.util.root_pattern("package.json", "jsconfig.jsonc")
           }
         end,
@@ -90,6 +101,7 @@ return {
             server = {
               standalone = false,
               capabilities = capabilities,
+              on_attach = on_attach,
             },
           }
         end
