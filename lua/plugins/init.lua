@@ -5,6 +5,7 @@
 -- TODO: window resize plugins: Maybe adapt to what you need.
 --        - https://github.com/anuvyklack/windows.nvim
 --        - https://github.com/beauwilliams/focus.nvim
+-- TODO: setup https://github.com/folke/neodev.nvim
 -- TODO: setup and write plugins around instant.nvim for code pairing
 
 return {

@@ -40,13 +40,11 @@ return {
         lualine_b = {
           'branch'
         },
-        lualine_y = {
-          'filetype',
-        },
+        lualine_c = {},
+        lualine_x = {},
+        lualine_y = {},
         lualine_z = {
-          {
-            'location',
-          },
+          'filetype',
         },
       },
       inactive_sections = {},
