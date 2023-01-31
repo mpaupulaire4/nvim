@@ -67,5 +67,6 @@ return {
         enable_autocmd = false,
       },
     }
+    require'treesitter-context'.setup {}
   end,
 }
