@@ -46,7 +46,7 @@ return {
           "cssls",
           "html",
           "tsserver",
-          "sumneko_lua",
+          "lua_ls",
         },
         automatic_installation = false,
       }
