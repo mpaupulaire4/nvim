@@ -1,12 +1,8 @@
 return {
-  "navarasu/onedark.nvim",
+  "olimorris/onedarkpro.nvim",
   lazy = false,
-  config = function()
-    local onedark = require('onedark')
-    onedark.setup {
-      style = 'darker',
-      -- toggle_style_key = "<C-S-t>"
-    }
-    onedark.load()
-  end
+  priority = 1000,
+  init = function()
+    vim.cmd("colorscheme onedark")
+  end,
 }

@@ -27,6 +27,9 @@ require("lazy").setup("plugins", {
     enabled = true,
     notify = false, -- get a notification when changes are found
   },
+  install = {
+    colorscheme = { "onedark" }
+  },
   performance = {
     reset_packpath = true, -- reset the package path to improve startup time
     rtp = {
