@@ -21,26 +21,20 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "neovim/nvim-lspconfig",
       "SmiteshP/nvim-navic",
+      "j-hui/fidget.nvim",
     },
     keys = {
-      { "H", vim.lsp.buf.hover },
-      -- {m.implementation,  vim.lsp.buf.implementation},
-      { "L", vim.lsp.buf.signature_help },
-      -- {m.add_workspace_folder,  vim.lsp.buf.add_workspace_folder},
-      -- {m.remove_workspace_folder,  vim.lsp.buf.remove_workspace_folder},
-      -- {m.list_workspace_folders,  print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>"},
-      { "<leader>gt", vim.lsp.buf.type_definition },
-      { "<leader>r", vim.lsp.buf.rename },
-      { "<leader>a", vim.lsp.buf.code_action },
-      -- {m.references,  vim.lsp.buf.references},
-      { "<leader>dd", vim.diagnostic.open_float },
-      { "<leader>dp", vim.diagnostic.goto_prev },
-      { "<leader>dn", vim.diagnostic.goto_next },
-      -- {m.set_loclist,  vim.diagnostic.setloclist},
+      -- { "H",          vim.lsp.buf.hover },
+      { "L",         vim.lsp.buf.signature_help },
+      -- { "<leader>gt", vim.lsp.buf.type_definition },
+      -- { "<leader>r",  vim.lsp.buf.rename },
+      -- { "<leader>a",  vim.lsp.buf.code_action },
+      -- { "<leader>dd", vim.diagnostic.open_float },
+      -- { "<leader>dp", vim.diagnostic.goto_prev },
+      -- { "<leader>dn", vim.diagnostic.goto_next },
       { "<leader>p", vim.lsp.buf.format },
     },
     config = function()
-      local icons = require "core.icons"
       require("mason-lspconfig").setup {
         ensure_installed = {
           "cssls",
@@ -51,18 +45,13 @@ return {
         automatic_installation = false,
       }
 
-      for name, icon in ipairs(icons.diagnostic) do
-        local hl = "DiagnosticSign" .. name
-        vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
-      end
-
       vim.diagnostic.config {
         virtual_text = {
           prefix = "",
         },
-        signs = true,
+        signs = false,
         underline = true,
-        update_in_insert = false,
+        update_in_insert = true,
       }
 
       local capabilities = require('cmp_nvim_lsp').default_capabilities()

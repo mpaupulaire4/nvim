@@ -16,8 +16,8 @@ return {
     { "<leader>fm", "<cmd>Telescope marks<CR>" },
 
     -- LSP related
-    { "gd", "<cmd>Telescope lsp_definitions<cr>" },
-    { "gr", "<cmd>Telescope lsp_references<cr>" },
+    -- { "gd", "<cmd>Telescope lsp_definitions<cr>" },
+    -- { "gr", "<cmd>Telescope lsp_references<cr>" },
     { "<leader>da", "<cmd>Telescope diagnostics<cr>" },
     { "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>" },
   },

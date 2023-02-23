@@ -27,6 +27,8 @@ return {
         "toml",
         "vim",
         "help",
+        "markdown",
+        "markdown_inline",
       },
       autotag = {
         enable = true,
