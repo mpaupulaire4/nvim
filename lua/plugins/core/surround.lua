@@ -2,7 +2,7 @@ return {
   'echasnovski/mini.surround',
   branch = 'stable',
   keys = {
-    'sa',
+    { 'sa', mode = { 'n', 'v' } },
     'sd',
     'sf',
     'sF',
