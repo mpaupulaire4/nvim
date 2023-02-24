@@ -5,8 +5,7 @@ return {
     'nvim-treesitter/nvim-treesitter-textobjects',
     'RRethy/nvim-treesitter-textsubjects',
     "windwp/nvim-ts-autotag",
-    -- TODO: see if adding its own setup fixes context
-    'nvim-treesitter/nvim-treesitter-context',
+    { 'nvim-treesitter/nvim-treesitter-context', opts = {} },
     "andymass/vim-matchup",
     'JoosepAlviste/nvim-ts-context-commentstring',
   },
@@ -69,6 +68,5 @@ return {
         enable_autocmd = false,
       },
     }
-    require'treesitter-context'.setup {}
   end,
 }

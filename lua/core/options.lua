@@ -50,3 +50,6 @@ opt.whichwrap:append "<>[]hl"
 
 -- Sessions
 opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
+
+-- Noice/ Experimental
+opt.cmdheight = 0

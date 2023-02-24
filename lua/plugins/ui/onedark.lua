@@ -7,10 +7,10 @@ return {
   end,
   opts = {
     highlights = {
-      DiagnosticUnderlineError = { sp = "${yellow}", style = "undercurl" },
-      DiagnosticUnderlineWarn = { sp = '${yellow}', style = "undercurl" },
-      DiagnosticUnderlineInfo = { sp = '${blue}', style = "undercurl" },
-      DiagnosticUnderlineHint = { sp = '${cyan}', style = "undercurl" },
+      DiagnosticUnderlineError = { style = "undercurl", sp = "${red}" },
+      DiagnosticUnderlineWarn = { style = "undercurl", sp = '${yellow}', },
+      DiagnosticUnderlineInfo = { style = "undercurl", sp = '${blue}', },
+      DiagnosticUnderlineHint = { style = "undercurl", sp = '${cyan}', },
     }
   }
 }

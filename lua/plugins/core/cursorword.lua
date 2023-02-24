@@ -1,8 +1,7 @@
 return {
-  'echasnovski/mini.cursorword',
-  branch = 'stable',
+  'tzachar/local-highlight.nvim',
   event = "BufRead",
-  config = function()
-    require('mini.cursorword').setup {}
-  end
+  opts = {
+
+  }
 }

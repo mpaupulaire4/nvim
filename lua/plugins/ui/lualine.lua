@@ -41,7 +41,12 @@ return {
           'branch'
         },
         lualine_c = {},
-        lualine_x = {},
+        lualine_x = {
+          {
+            require("noice").api.status.mode.get,
+            cond = require("noice").api.status.mode.has,
+          },
+        },
         lualine_y = {},
         lualine_z = {
           'filetype',

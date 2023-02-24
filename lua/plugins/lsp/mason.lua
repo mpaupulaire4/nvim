@@ -22,6 +22,8 @@ return {
       "neovim/nvim-lspconfig",
       "SmiteshP/nvim-navic",
       "j-hui/fidget.nvim",
+      "b0o/schemastore.nvim",
+      'sigmasd/deno-nvim',
     },
     keys = {
       -- { "H",          vim.lsp.buf.hover },
@@ -72,10 +74,24 @@ return {
           }
         end,
         ["denols"] = function()
-          lspconfig["denols"].setup {
+          require("deno-nvim").setup {
+            server = {
+              capabilities = capabilities,
+              on_attach = on_attach,
+              root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc")
+            }
+          }
+        end,
+        ["jsonls"] = function()
+          lspconfig["jsonls"].setup {
             capabilities = capabilities,
             on_attach = on_attach,
-            root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc")
+            settings = {
+              json = {
+                schemas = require('schemastore').json.schemas(),
+                validate = { enable = true }
+              }
+            }
           }
         end,
         ["tsserver"] = function()
