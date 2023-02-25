@@ -2,7 +2,7 @@
 -- TODO: Verify that this is needed if diffview is used
 return {
   'akinsho/git-conflict.nvim',
-  lazy = true,
+  event = 'BufRead',
   version = "*",
   opts = {
     default_mappings = false, -- disable buffer local mapping created by this plugin
