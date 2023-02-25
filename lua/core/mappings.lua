@@ -43,7 +43,7 @@ map({ "n", "v" }, "d", '"_d')
 -- navigation within insert mode
 -- map("i", "<Home>", "<ESC>^i")
 
-map("n", "<leader>n", ":set rnu! <CR>") -- toggle numbers
+-- map("n", "<leader>n", ":set rnu! <CR>") -- toggle numbers
 map("n", "<C-a>", "ggVG") -- select whole file content
 
 -- map("n", "<S-t>", ":enew <CR>") -- new buffer

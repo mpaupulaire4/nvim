@@ -1,10 +1,10 @@
 return {
   "gbprod/yanky.nvim",
   keys = {
-    { "p",         "<Plug>(YankyPutAfter)",    mode = { "n", "x" }, },
-    { "P",         "<Plug>(YankyPutBefore)",   mode = { "n", "x" }, },
-    { "<leader>p", "<Plug>(YankyRingHistory)", mode = { "n", "x" }, },
-    { "y",         "<Plug>(YankyYank)",        mode = { "n", "x" }, },
+    { "p",     "<Plug>(YankyPutAfter)",    mode = { "n", "x" }, },
+    { "P",     "<Plug>(YankyPutBefore)",   mode = { "n", "x" }, },
+    { "<c-p>", "<Plug>(YankyRingHistory)", mode = { "n", "x" }, },
+    { "y",     "<Plug>(YankyYank)",        mode = { "n", "x" }, },
   },
   opts = {
     ring = {

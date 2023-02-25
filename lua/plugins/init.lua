@@ -1,3 +1,5 @@
+-- TODO: look into https://github.com/anuvyklack/hydra.nvim
+--        especially for window management
 -- TODO: look into a note taking plugin
 --        - https://github.com/nvim-neorg/neorg
 --        - https://github.com/phaazon/mind.nvim
@@ -52,4 +54,5 @@ return {
   { import = "plugins.lsp" },
   { import = "plugins.git" },
   { import = "plugins.ui" },
+  { import = "plugins.extra" },
 }
