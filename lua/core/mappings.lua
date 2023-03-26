@@ -63,18 +63,14 @@ map("v", ">", ">gv")
 
 -- Move Line(s) Up
 map("n", "<A-Up>", "<cmd>m .-2<CR>==")
-map("i", "<A-Up>", "<Esc>:m .-2<CR>==i")
-map("v", "<A-Up>", ":m '<-2<CR>gv=gv")
+map("v", "<A-Up>", "<cmd>m '<-2<CR>gv=gv")
 -- Move Line(s) Down
-map("n", "<A-Down>", ":m .+1<CR>==")
-map("i", "<A-Down>", "<Esc>:m .+1<CR>==i")
-map("v", "<A-Down>", ":m '>+1<CR>gv=gv")
+map("n", "<A-Down>", "<cmd>m .+1<CR>==")
+map("v", "<A-Down>", "<cmd>m '>+1<CR>gv=gv")
 
 -- Duplicate Line(s) Up
 map("n", "<S-A-Up>", "\"9Y\"9P")
-map("i", "<S-A-Up>", "<Esc>\"9Y\"9Pi")
 map("v", "<S-A-Up>", "\"9Y\"9P`[v`]")
 -- Duplicate Line(s) Down
 map("n", "<S-A-Down>", "\"9Y\"9p")
-map("i", "<S-A-Down>", "<Esc>\"9Y\"9pi")
 map("v", "<S-A-Down>", "\"9Y\"9Pgv")

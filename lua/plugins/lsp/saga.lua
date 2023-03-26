@@ -3,7 +3,8 @@ return {
   "glepnir/lspsaga.nvim",
   keys = {
     { "<leader>r",  "<cmd>Lspsaga rename<cr>" },
-    { "gd",         "<cmd>Lspsaga peek_definition<cr>" },
+    { "gd",         "<cmd>Lspsaga goto_definition<cr>" },
+    { "gp",         "<cmd>Lspsaga peek_definition<cr>" },
     { "gt",         "<cmd>Lspsaga peek_type_definition<cr>" },
     { "gr",         "<cmd>Lspsaga lsp_finder<cr>" },
     { "<leader>a",  "<cmd>Lspsaga code_action<cr>" },
