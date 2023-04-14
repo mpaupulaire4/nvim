@@ -19,11 +19,8 @@ opt.mouse = "a"
 
 -- Numbers / Status Column
 opt.number = true
-opt.numberwidth = 2
--- TODO: when statuscolumn is a thing, add and fix the following.
--- from: https://www.reddit.com/r/neovim/comments/10j0vyf/finally_figured_out_a_statuscolumn_i_am_happy/
--- %{&nu?(&rnu && v:relnum?v:relnum:v:lnum):''}
--- opt.statuscolumn = "%=%{v:virtnum < 1 ? (v:relnum ? v:relnum : v:lnum < 10 ? v:lnum . '  ' : v:lnum) : ''}%=%s"
+opt.numberwidth = 3
+opt.statuscolumn = "%=%{v:virtnum < 1 && &nu ? (&rnu && v:relnum ? v:relnum : v:lnum) : ''}%=%s"
 opt.ruler = false
 
 -- disable nvim intro
