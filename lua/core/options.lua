@@ -1,8 +1,6 @@
 local opt = vim.opt
 
--- TODO: When this is supported remove stabilize.nvim
--- opt.splitkeep = "screen"
-
+opt.splitkeep = "screen"
 opt.showmode = false
 opt.title = true
 opt.clipboard = "unnamedplus"

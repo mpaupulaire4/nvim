@@ -5,7 +5,7 @@ return {
   "nvim-neo-tree/neo-tree.nvim",
   branch = "v2.x",
   keys = {
-    { "<C-n>", "<cmd>Neotree filesystem float toggle reveal<CR>" },
+    { "<leader>fe", "<cmd>Neotree filesystem float toggle reveal<CR>" },
   },
   dependencies = {
     "nvim-lua/plenary.nvim",
