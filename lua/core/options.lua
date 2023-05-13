@@ -19,7 +19,7 @@ opt.mouse = "a"
 
 -- Numbers / Status Column
 opt.number = true
-opt.numberwidth = 3
+opt.numberwidth = 2
 opt.statuscolumn = "%=%{v:virtnum < 1 && &nu ? (&rnu && v:relnum ? v:relnum : v:lnum) : ''}%=%s"
 opt.ruler = false
 
